@@ -15,15 +15,8 @@
                 <div class="col-sm-3">
                     <div class="roles-menu">
                         <ul class="nav">
-                            <li><a href="#">CEO</a></li>
-                            <li><a href="#">Manager</a></li>
-                            <li><a href="#">Team Leader</a></li>
-                            <li><a href="#">Accountant</a></li>
-                            <li><a href="#">Web Developer</a></li>
-                            <li><a href="#">Web Designer</a></li>
-                            <li><a href="#">HR</a></li>
-                            <li><a href="#">UI/UX Developer</a></li>
-                            <li><a href="#">SEO Analyst</a></li>
+                            <asp:PlaceHolder ID="ShowGroupData" runat="server"></asp:PlaceHolder>
+                            
                         </ul>
                     </div>
                 </div>
@@ -60,7 +53,7 @@
                                             <asp:TemplateField>
                                                 
                                                 <ItemTemplate>
-                                                    <li class="list-group-item"><%# Eval("PageName") %>
+                                                    <li class="list-group-item "><%# Eval("PageName") %>
                                                         <div class="pull-right">
                                                             <asp:CheckBox ID="CheckBox1"  runat="server" />
                                                         </div>
@@ -77,26 +70,54 @@
                             </div>
                         </div>
 
+                        <asp:Panel ID="pnlUpdate" runat="server">
                         <div class="col-md-6">
                             <h6 class="panel-title m-b-20">Update</h6>
+                             <div class="row">                                
+                                <div class="col-md-4">
+                                    <asp:Button ID="btnUpdate" OnClick="btnUpdate_Click"  CssClass="btn btn-success form-control" runat="server" Text="Update" />
+                                </div>
+                                 <div class="col-md-4">
+                                    <asp:Button ID="btnCancle" OnClick="btnCancle_Click"  CssClass="btn btn-default form-control" runat="server" Text="Cancel" />
+                                </div>
+                                 <div class="col-md-4">
+                                    <asp:Button ID="btnDelete" OnClick="btnDelete_Click"  CssClass="btn btn-danger form-control" runat="server" Text="Delete" />
+                                </div>
+                            </div>
+                            <asp:Label ID="lblCreateGroup2" runat="server"></asp:Label>
+                            <br />
                             <div class="panel">
                                 <ul class="list-group">
 
-                                    <li class="list-group-item">Employee
-										<div class="pull-right">
-                                            <asp:CheckBox ID="CheckBox3" Width="30" Height="30" runat="server" />
-                                        </div>
-                                    </li>
+                                    <asp:GridView ID="GridView_Update" ShowHeader="false" GridLines="None" Width="100%" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1">
+                                        <Columns>
+                                            <asp:TemplateField HeaderText="m_id" InsertVisible="False" SortExpression="m_id">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="Label1" CssClass="btn-sm text-success circle" runat="server" Text='<%# Eval("m_id") %>'></asp:Label>
 
-                                    <li class="list-group-item">Employee
-										<div class="pull-right">
-                                            <asp:CheckBox ID="CheckBox4" Width="30" Height="30" runat="server" />
-                                        </div>
-                                    </li>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
+                                            <asp:TemplateField>
+
+                                                <ItemTemplate>
+                                                    <li class="list-group-item "><%# Eval("PageName") %>
+                                                        <div class="pull-right">
+                                                            <asp:CheckBox ID="CheckBox1" runat="server" />
+                                                        </div>
+                                                    </li>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
+                                        </Columns>
+                                    </asp:GridView>
+
+                                    
 
                                 </ul>
                             </div>
                         </div>
+                        </asp:Panel>
 
                     </div>
 

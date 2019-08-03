@@ -7,12 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace maganement
 {
-    public partial class Default : System.Web.UI.Page
+    public partial class Error : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string name = "abcdef";
-            Label1.Text = DateTime.Now.ToString("ddMMyyyyhhmmss");
+
         }
     }
 }

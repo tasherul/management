@@ -34,7 +34,11 @@
                 </div>
 				<a id="toggle_btn" href="javascript:void(0);"><i class="la la-bars"></i></a>
                 <div class="page-title-box pull-left">
-					<h3>Focus Technologies</h3>
+					<%--<h3>Focus Technologies</h3>--%>
+                    <asp:DropDownList ID="WireHouse" AutoPostBack="true" runat="server" DataSourceID="SqlDataSource1" DataTextField="WirehouseName" DataValueField="w_id">
+                    </asp:DropDownList>
+                    <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:dbm %>' SelectCommand="SELECT * FROM [wirehouse]"></asp:SqlDataSource>
+                    <asp:LinkButton ID="LinkButton1" Font-Size="25px" ForeColor="White" runat="server"> <i class="fa fa-arrow-circle-right"></i> </asp:LinkButton>
                 </div>
 				<a id="mobile_btn" class="mobile_btn pull-left" href="#sidebar"><i class="fa fa-bars" aria-hidden="true"></i></a>
 				<ul class="nav navbar-nav navbar-right user-menu pull-right">
@@ -126,19 +130,10 @@
 							<li><a href="#">My Profile</a></li>
 							<li><a href="#">Edit Profile</a></li>
 							<li><a href="#">Settings</a></li>
-							<li><a href="#">Logout</a></li>
+							<li><a href="../Logout">Logout</a></li>
 						</ul>
 					</li>
-				</ul>
-				<div class="dropdown mobile-user-menu pull-right">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
-					<ul class="dropdown-menu pull-right">
-						<li><a href="profile.html">My Profile</a></li>
-						<li><a href="edit-profile.html">Edit Profile</a></li>
-						<li><a href="settings.html">Settings</a></li>
-						<li><a href="login.html">Logout</a></li>
-					</ul>
-				</div>
+				</ul>			
             </div>
 			
             <div class="sidebar" id="sidebar">
@@ -152,13 +147,12 @@
 							<li class="submenu">
 								<a href="#" ><i class="la la-folder-open"></i> <span>Brand & Catagory</span><span class="menu-arrow"></span>  </a>
 								<ul style="display: none;">
-								<li><a href="#"> Catagory</a></li>
-								<li><a href="#"> Catagory List</a></li>
-								<li><a href="#">Sub Catagory  </a></li>
-								 <li><a href="#">Sub Catagory List</a></li>
-								 <li><a href="#">Brand</a></li>
-								 <li><a href="#">Brand List</a></li>
- 
+								    <li><a href="../BrandCategory/Categoty_Add">Catagory</a></li>
+								    <li><a href="../BrandCategory/Category_List">Catagory List</a></li>
+								    <li><a href="../BrandCategory/Sub_Category">Sub Catagory </a></li>
+								    <li><a href="../BrandCategory/Sub_Category_List">Sub Catagory List</a></li>
+								    <li><a href="../BrandCategory/Brand">Brand</a></li>
+								    <li><a href="../BrandCategory/Brand_List">Brand List</a></li> 
 								</ul>
 							</li>
 							<li class="submenu">
@@ -174,8 +168,8 @@
 							<li class="submenu">
 								<a href="#"  ><i class="la la-user-plus"></i> <span>Customar & Supplier</span><span class="menu-arrow"></span> </a>
 								<ul style="display: none;">
-									<li><a href="#">Customar Add</a></li>
-									<li><a href="#">Customar List</a></li>
+									<li><a href="../CustomerSupplier/Customer_Add">Customar Add</a></li>
+									<li><a href="../CustomerSupplier/Customer_List">Customar List</a></li>
 									<li><a href="#">Supplier Add</a></li>
 									<li><a href="#">Supplier List</a></li>
 									  
@@ -237,9 +231,9 @@
 							<li class="submenu">
 								<a href="#"><i class="la la-money"></i> <span>Users</span><span class="menu-arrow"></span>  </a>
 								<ul style="display: none;">
-									<li><a href="User/CreateGroup">Create Group</a></li>
-									<li><a href="#">Add a Users</a></li>
-									<li><a href="#">Users List</a></li>
+									<li><a href="../User/CreateGroup">Create Group</a></li>
+									<li><a href="../User/AddUser">Add a Users</a></li>
+									<li><a href="../User/UserList">Users List</a></li>
 								</ul>
 							</li>
 							

@@ -54,11 +54,32 @@ namespace maganement
                         string Ui = " from m_login where Username='" + UserName + "' and Password='" + Password + "'";
                         if (_chk.int32Check("select count(*) "+Ui) == 1)
                         {
-                            Session["m_UserID"] = _chk.stringCheck("select userid " + Ui);
-                            Session["m_Type"] = _chk.stringCheck("select Type " + Ui);
-                            Session["m_Name"] = _chk.stringCheck("select Name " + Ui);
-                            Session["m_photo"] = _chk.stringCheck("select Photo "+Ui);
-                            Response.Redirect(URL);
+                            string Type = _chk.stringCheck("select Type " + Ui);
+                            string Authority = _chk.stringCheck("select Authority " + Ui);
+                            if (Type == "Administrator")
+                            {
+                                Session["m_UserID"] = _chk.stringCheck("select userid " + Ui);
+                                Session["m_Type"] = _chk.stringCheck("select Type " + Ui);
+                                Session["m_Name"] = _chk.stringCheck("select Name " + Ui);
+                                Session["m_photo"] = _chk.stringCheck("select Photo " + Ui);
+                                Response.Redirect(URL);
+                            }
+                            else
+                            {
+                                if(Authority=="True")
+                                {
+                                    Session["m_UserID"] = _chk.stringCheck("select userid " + Ui);
+                                    Session["m_Type"] = _chk.stringCheck("select Type " + Ui);
+                                    Session["m_Name"] = _chk.stringCheck("select Name " + Ui);
+                                    Session["m_photo"] = _chk.stringCheck("select Photo " + Ui);
+                                    Response.Redirect(URL);
+                                }
+                                else
+                                {
+                                    lblResult.Text = "Login Athority Failed. Can't Login!";
+                                }
+                            }
+                            
                         }
                         else
                         {
@@ -93,5 +114,11 @@ namespace maganement
 
 
         }
+        private void go()
+        {
+
+        }
+
+
     }
 }

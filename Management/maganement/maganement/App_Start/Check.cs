@@ -20,7 +20,7 @@ namespace maganement
     public class Check
     {
         private int _Count;
-        private string ConfigName;
+        private string ConfigName="dbm";
 
         public string ConfigarationName
         {
