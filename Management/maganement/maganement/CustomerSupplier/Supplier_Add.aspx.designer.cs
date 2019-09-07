@@ -10,7 +10,7 @@
 namespace maganement.CustomerSupplier {
     
     
-    public partial class Customer_Add {
+    public partial class Supplier_Add {
         
         /// <summary>
         /// pnlDelete control.

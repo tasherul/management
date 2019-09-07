@@ -21,7 +21,24 @@ namespace maganement
     {
         private int _Count;
         private string ConfigName="dbm";
+        private string BoolError;
+        private int Int32Check;
+        private string Int32CheckError;
 
+
+
+        public string BoolSecurityErrorMessege
+        {
+            get { return BoolError; }
+        }
+        public int Int32SecurityCheck
+        {
+            get { return Int32Check; }
+        }
+        public string Int32SecurityCheckError
+        {
+            get { return Int32CheckError; }
+        }
         public string ConfigarationName
         {
             get { return ConfigName; }
@@ -50,6 +67,35 @@ namespace maganement
         {
             return int_Check_PV(CommandText);
         }
+        public bool int32CheckSecurity(string CommandText,int CountNumber)
+        {
+            AntiInjection _Anti = new AntiInjection();
+            _Anti.Address = true; 
+            _Anti.Email = true;
+            _Anti.FullName = true;
+            _Anti.Password = true;
+            _Anti.Url = true;
+            if(_Anti.StringData(CommandText))
+            {
+                Int32Check = int_Check_PV(CommandText);
+                if(Int32Check==CountNumber)
+                {
+                    Int32CheckError = "Successful";
+                    return true;                    
+                }
+                else
+                {
+                    Int32CheckError = "Not Match";
+                    return false;                    
+                }
+            }
+            else
+            {
+                Int32CheckError = "Error: String is not Secure.";
+                return false;                
+            }
+
+        }
         private string string_Check_PV(string CommandText)
         {
             using (SqlConnection Conn = new SqlConnection(ConfigurationManager.ConnectionStrings[ConfigName].ConnectionString))
@@ -75,6 +121,81 @@ namespace maganement
         public string stringCheck(string CommandText)
         {
             return string_Check_PV(CommandText);
+        }
+        AntiInjection _Anti = new AntiInjection();
+        private string Pr_Security_Ck(string CommandText)
+        {
+            _Anti.Address = true; _Anti.Email = true; _Anti.FullName = true; _Anti.Password = true;
+            _Anti.Url = true;
+            if (_Anti.StringData(CommandText))
+            {
+                using (SqlConnection Conn = new SqlConnection(ConfigurationManager.ConnectionStrings[ConfigName].ConnectionString))
+                {
+                    Conn.Open();
+                    SqlCommand newCmd = new SqlCommand();
+                    newCmd.Connection = Conn;
+                    newCmd.CommandText = CommandText;
+                    try
+                    {
+                        string returnValue = "Sucessfully";// newCmd.ExecuteScalar().ToString();
+                        newCmd.ExecuteNonQuery();
+                        Conn.Close();
+                        return returnValue;
+                    }
+                    catch (Exception error)
+                    {
+                        Conn.Close();
+                        return error.Message;
+                    }
+
+                }
+            }
+            else
+                return "Unauthorized Symbol.";
+            
+        }
+        private bool Pr_Security_Ck_bool(string CommandText)
+        {
+            _Anti.Address = true; _Anti.Email = true; _Anti.FullName = true; _Anti.Password = true;
+            _Anti.Url = true;
+            if (_Anti.StringData(CommandText))
+            {
+                using (SqlConnection Conn = new SqlConnection(ConfigurationManager.ConnectionStrings[ConfigName].ConnectionString))
+                {
+                    Conn.Open();
+                    SqlCommand newCmd = new SqlCommand();
+                    newCmd.Connection = Conn;
+                    newCmd.CommandText = CommandText;
+                    try
+                    {
+                        //string returnValue = 
+                        newCmd.ExecuteNonQuery().ToString();
+                        Conn.Close();
+                        BoolError = "Sucessfully";// returnValue;
+                        return true;
+                    }
+                    catch (Exception er)
+                    {
+                        Conn.Close();
+                        BoolError = er.Message;
+                        return false;
+                    }
+
+                }
+            }
+            else
+            {
+                BoolError = "Unauthorized Symbol.";
+                return false;
+            }
+        }
+        public string StringSecurityCheck(string CMD)
+        {
+            return Pr_Security_Ck(CMD);
+        }
+        public bool BoolSecurityCheck(string CMD)
+        {
+            return Pr_Security_Ck_bool(CMD);
         }
         private bool _bool_Check(string CMD)
         {
@@ -105,6 +226,7 @@ namespace maganement
             return _bool_Check(CommandText);
         }
 
-
+    
+   
     }
 }

@@ -7,10 +7,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 namespace maganement.CustomerSupplier
 {
-    public partial class Customer_List : System.Web.UI.Page
+    public partial class Supplier_List : System.Web.UI.Page
     {
         Verification _VR = new Verification();
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbm"].ConnectionString);
@@ -33,11 +32,11 @@ namespace maganement.CustomerSupplier
             pnlShow.Controls.Clear();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
-            cmd.CommandText = "select * from Customer";
+            cmd.CommandText = "select * from Supplier";
             con.Open();
             string Show = "";
             SqlDataReader dr = cmd.ExecuteReader();
-            while(dr.Read())
+            while (dr.Read())
             {
                 string ID = dr["c_id"].ToString();
                 string Name = dr["Name"].ToString();
@@ -46,26 +45,25 @@ namespace maganement.CustomerSupplier
                 Show += string.Format(@"<div class='col-md-4 col-sm-4 col-xs-6 col-lg-3'>
 							<div class='profile-widget'>
 								<div class='profile-img'>
-									<a href='../CustomerSupplier/ViewCustomer?={0}' class='avatar'>{3}</a>
+									<a href='../CustomerSupplier/ViewSupplier?={0}' class='avatar'>{3}</a>
 								</div>
 								<div class='dropdown profile-action'>
 									<a href='#' class='action-icon dropdown-toggle' data-toggle='dropdown' aria-expanded='false'><i class='fa fa-ellipsis-v'></i></a>
 									<ul class='dropdown-menu pull-right'>
-										<li><a href='../CustomerSupplier/Customer_Add?ed_id={0}'><i class='fa fa-pencil m-r-5'></i> Edit</a></li>
-										<li><a href='../CustomerSupplier/Customer_Add?de_id={0}'><i class='fa fa-trash-o m-r-5'></i> Delete</a></li>
+										<li><a href='../CustomerSupplier/Supplier_Add?ed_id={0}'><i class='fa fa-pencil m-r-5'></i> Edit</a></li>
+										<li><a href='../CustomerSupplier/Supplier_Add?de_id={0}'><i class='fa fa-trash-o m-r-5'></i> Delete</a></li>
 									</ul>
 								</div>
-								<h4 class='user-name m-t-10 m-b-0 text-ellipsis'><a href='../CustomerSupplier/ViewCustomer?={0}'>{1}</a></h4>
-								<h5 class='user-name m-t-10 m-b-0 text-ellipsis'><a href='../CustomerSupplier/ViewCustomer?={0}'>{2}</a></h5>
-								<div class='small text-muted'>Customer</div>
-								<a href='../CustomerSupplier/ViewCustomer?={0}' class='btn btn-default btn-sm m-t-10'>View Profile</a>
+								<h4 class='user-name m-t-10 m-b-0 text-ellipsis'><a href='../CustomerSupplier/ViewSupplier?={0}'>{1}</a></h4>
+								<h5 class='user-name m-t-10 m-b-0 text-ellipsis'><a href='../CustomerSupplier/ViewSupplier?={0}'>{2}</a></h5>
+								<div class='small text-muted'>Supplier</div>
+								<a href='../CustomerSupplier/ViewSupplier?={0}' class='btn btn-default btn-sm m-t-10'>View Profile</a>
 							</div> 
-						</div>", ID,Name,Mobile,FirstLetter);
+						</div>", ID, Name, Mobile, FirstLetter);
             }
             con.Close();
             pnlShow.Controls.Add(new LiteralControl(Show));
         }
-
 
     }
 }

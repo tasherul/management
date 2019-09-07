@@ -156,12 +156,12 @@
 								</ul>
 							</li>
 							<li class="submenu">
-								<a href="#"  ><i class="la la-plus-square"></i> <span>Product</span><span class="menu-arrow"></span> </a>
+								<a href="#" ><i class="la la-plus-square"></i> <span>Product</span><span class="menu-arrow"></span> </a>
 								<ul style="display: none;">
-									<li><a href="#">Product Add</a></li>
-									<li><a href="#">Product List</a></li>
-									<li><a href="#">Product Quality</a></li>
- 
+									<li><a href="../Product/Product_Add">Product Add</a></li>
+									<li><a href="../Product/Product_List">Product List</a></li>
+									<li><a href="../Product/Product_Stock">Product Stock</a></li>
+                                    <li><a href="../Product/Product_StockList">Product Stock List</a></li>
 								</ul>
 							</li>
 							
@@ -170,8 +170,8 @@
 								<ul style="display: none;">
 									<li><a href="../CustomerSupplier/Customer_Add">Customar Add</a></li>
 									<li><a href="../CustomerSupplier/Customer_List">Customar List</a></li>
-									<li><a href="#">Supplier Add</a></li>
-									<li><a href="#">Supplier List</a></li>
+									<li><a href="../CustomerSupplier/Supplier_Add">Supplier Add</a></li>
+									<li><a href="../CustomerSupplier/Supplier_List">Supplier List</a></li>
 									  
 								</ul>
 							</li>
@@ -237,16 +237,16 @@
 								</ul>
 							</li>
 							
-							<li class="submenu">
+						<%--	<li class="submenu">
 								<a href="#"><i class="la la-cc-mastercard"></i> <span> Payment </span><span class="menu-arrow"></span> </span></a>
 								<ul style="display: none;">
 									<li><a href="#">Add a Payment Card</a></li>
 									<li><a href="#">Payments</a></li>
 									<li><a href="#">List Payment</a></li>									
 								</ul>
-							</li>
+							</li>--%>
 							
-							<li class="submenu">
+						<%--	<li class="submenu">
 								<a href="#"><i class="la la-comments"></i> <span> Chat </span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
 									<li><a href="#">Find a Owner</a></li>		
@@ -257,16 +257,16 @@
 									<li><a href="#">Send List</a></li>
 									<li><a href="#">Request List</a></li>									
 								</ul>
-							</li>	
+							</li>	--%>
 							
-							<li class="submenu">
+							<%--<li class="submenu">
 								<a href="#"><i class="la la-bell"></i> <span>Event</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
 									<li><a href="#">Create Event</a></li>
 									<li><a href="#">Event List </a></li>
 									 
 								</ul>
-							</li>
+							</li>--%>
 							
 							<li class="submenu">
 								<a href="#"><i class="la la-barcode"></i> <span>Barcode</span> <span class="menu-arrow"></span></a>
@@ -277,7 +277,7 @@
 								</ul>
 							</li>
 							
-							<li class="submenu">
+						<%--	<li class="submenu">
 								<a href="#"><i class="la la-cloud-upload"></i> <span>Product Online</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
 									<li><a href="#">Product Add</a></li>
@@ -288,7 +288,7 @@
 									<li><a href="#">Report</a></li>
 									<li><a href="#">Fearued Product</a></li>
 								</ul>
-							</li>
+							</li>--%>
 							
 						 
 							<li class="submenu">
@@ -303,12 +303,15 @@
 									<li><a href="#">Profile</a></li>
 								</ul>
 							</li>
-							<li> 
+
+							<%--<li> 
 								<a href="#"><i class="la la-group"></i> <span>Refference</span></a>
-							</li>
+							</li>--%>
+
 							<li> 
 								<a href="#"><i class="la la-info-circle"></i> <span>Helpline</span></a>
 							</li>
+
 						</ul>
 					</div>
                 </div>

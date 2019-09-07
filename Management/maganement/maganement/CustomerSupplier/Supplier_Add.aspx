@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="Customer_Add.aspx.cs" Inherits="maganement.CustomerSupplier.Customer_Add" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="Supplier_Add.aspx.cs" Inherits="maganement.CustomerSupplier.Supplier_Add" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>Customer Add</title>
+      <title>Supplier Add</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Body" runat="server">
-    <div class="page-wrapper">
+      <div class="page-wrapper">
         <div class="content container-fluid">
             <div class="row">
 						<div class="col-sm-4 col-xs-3">
@@ -58,7 +58,7 @@
                 </asp:Panel>
                 <asp:Label ID="lblResult" runat="server"></asp:Label>
                 <div class="m-t-20 text-center">
-                    <asp:Button ID="btnCreate" OnClick="btnCreate_Click" CssClass="btn btn-success" runat="server" Text="Create Customer" />
+                    <asp:Button ID="btnCreate" OnClick="btnCreate_Click"  CssClass="btn btn-success" runat="server" Text="Create Customer" />
                     <asp:Button ID="btnUpdate" CssClass="btn btn-info" OnClick="btnUpdate_Click" runat="server" Text="Update Customer" />
                 </div>
             

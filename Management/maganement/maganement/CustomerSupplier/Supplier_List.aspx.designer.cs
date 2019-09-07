@@ -10,7 +10,7 @@
 namespace maganement.CustomerSupplier {
     
     
-    public partial class Customer_List {
+    public partial class Supplier_List {
         
         /// <summary>
         /// pnlShow control.

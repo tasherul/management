@@ -215,7 +215,12 @@
     <Content Include="Content\Site.css" />
     <Content Include="CustomerSupplier\Customer_Add.aspx" />
     <Content Include="CustomerSupplier\Customer_List.aspx" />
+    <Content Include="CustomerSupplier\Supplier_Add.aspx" />
+    <Content Include="CustomerSupplier\Supplier_List.aspx" />
+    <Content Include="CustomerSupplier\ViewCustomer.aspx" />
+    <Content Include="CustomerSupplier\ViewSupplier.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="Demo\Default.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -238,10 +243,16 @@
     <Content Include="assets\plugins\summernote\dist\font\summernote291f.woff" />
     <Content Include="assets\plugins\summernote\dist\font\summernoted41d.eot" />
     <Content Include="ForgotPassword.aspx" />
+    <Content Include="image\customer.PNG" />
     <Content Include="image\noimage.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="mDesign.Master" />
+    <Content Include="Product\Product_Add.aspx" />
+    <Content Include="Product\Product_List.aspx" />
+    <Content Include="Product\Product_Stock.aspx" />
+    <Content Include="Product\Product_StockList.aspx" />
+    <Content Include="Return\Purchase_Add.aspx" />
     <Content Include="WebForm1.aspx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -362,11 +373,46 @@
     <Compile Include="CustomerSupplier\Customer_List.aspx.designer.cs">
       <DependentUpon>Customer_List.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CustomerSupplier\Supplier_Add.aspx.cs">
+      <DependentUpon>Supplier_Add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerSupplier\Supplier_Add.aspx.designer.cs">
+      <DependentUpon>Supplier_Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerSupplier\Supplier_List.aspx.cs">
+      <DependentUpon>Supplier_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerSupplier\Supplier_List.aspx.designer.cs">
+      <DependentUpon>Supplier_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerSupplier\ViewCustomer.aspx.cs">
+      <DependentUpon>ViewCustomer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerSupplier\ViewCustomer.aspx.designer.cs">
+      <DependentUpon>ViewCustomer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerSupplier\ViewSupplier.aspx.cs">
+      <DependentUpon>ViewSupplier.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerSupplier\ViewSupplier.aspx.designer.cs">
+      <DependentUpon>ViewSupplier.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Demo\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Demo\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Error.aspx.cs">
@@ -408,7 +454,42 @@
       <DependentUpon>mDesign.Master</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Product\Product_Add.aspx.cs">
+      <DependentUpon>Product_Add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Product\Product_Add.aspx.designer.cs">
+      <DependentUpon>Product_Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Product\Product_List.aspx.cs">
+      <DependentUpon>Product_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Product\Product_List.aspx.designer.cs">
+      <DependentUpon>Product_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Product\Product_Stock.aspx.cs">
+      <DependentUpon>Product_Stock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Product\Product_Stock.aspx.designer.cs">
+      <DependentUpon>Product_Stock.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Product\Product_StockList.aspx.cs">
+      <DependentUpon>Product_StockList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Product\Product_StockList.aspx.designer.cs">
+      <DependentUpon>Product_StockList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Return\Purchase_Add.aspx.cs">
+      <DependentUpon>Purchase_Add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Return\Purchase_Add.aspx.designer.cs">
+      <DependentUpon>Purchase_Add.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="User\AddUser.aspx.cs">
       <DependentUpon>AddUser.aspx</DependentUpon>
@@ -441,6 +522,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="AutoComplete\css\" />
+    <Folder Include="AutoComplete\js\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

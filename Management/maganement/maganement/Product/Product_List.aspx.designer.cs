@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace maganement.CustomerSupplier {
+namespace maganement.Product {
     
     
-    public partial class Customer_List {
+    public partial class Product_List {
         
         /// <summary>
         /// pnlShow control.

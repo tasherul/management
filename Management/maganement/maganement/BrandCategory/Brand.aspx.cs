@@ -56,7 +56,6 @@ namespace maganement.BrandCategory
                         btnUpdateBrand.Visible = true;
                         btnBrand.Visible = false;
                         pnlUpdate.Visible = false;
-
                     }
                     else
                     {
@@ -179,7 +178,6 @@ namespace maganement.BrandCategory
                 lblResult.Text = "<div class='alert alert-danger'><span> Select Wirehouse, Category, Sub Category and Brand Name</span></div>";
             }
         }
-
         protected void btnUpdateBrand_Click(object sender, EventArgs e)
         {
             string ID = Request.QueryString["b_id"].ToString();
@@ -193,5 +191,7 @@ namespace maganement.BrandCategory
                 lblResult.Text = "<div class='alert alert-danger'><span>Type Brand Name.</span></div> ";
             }
         }
+
+
     }
 }

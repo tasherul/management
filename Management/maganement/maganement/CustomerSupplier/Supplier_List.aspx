@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="Customer_List.aspx.cs" Inherits="maganement.CustomerSupplier.Customer_List" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="Supplier_List.aspx.cs" Inherits="maganement.CustomerSupplier.Supplier_List" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>Customer List</title>
+    <title>Supplier List</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Body" runat="server">
-        <div class="page-wrapper">
+     <div class="page-wrapper">
                 <div class="content container-fluid">
 					<div class="row">
 						<div class="col-sm-4 col-xs-3">
