@@ -85,7 +85,7 @@
 											<ul class="nav nav-tabs nav-tabs-top nav-justified m-b-0">
 												<li class="active"><a href="#all_tasks" data-toggle="tab" aria-expanded="true">Stock List</a></li>
 												<li><a href="#pending_tasks" data-toggle="tab" aria-expanded="false">Product List</a></li>
-												<li><a href="#completed_tasks" data-toggle="tab" aria-expanded="false">Completed Payment</a></li>
+												<li><a href="#completed_tasks" data-toggle="tab" aria-expanded="false">Return Product</a></li>
 											</ul>
 											<div class="tab-content">
 												<div class="tab-pane active" id="all_tasks">

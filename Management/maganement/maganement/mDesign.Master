@@ -187,10 +187,8 @@
 							
 							<li class="submenu">
 								<a href="#"  ><i class="la la-caret-left"></i> <span> Return</span><span class="menu-arrow"></span>  </a>
-								<ul style="display: none;">
-									<li><a href="#">Sale</a></li>
-									<li><a href="#">Return Sale List</a></li>
-									<li><a href="#">Purchase</a></li>
+								<ul style="display: none;">								
+									<li><a href="../Return/Purchase_Add">Purchase</a></li>
 									<li><a href="#">Return Purchase List</a></li>
  								
 								</ul>

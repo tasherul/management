@@ -34,7 +34,7 @@ namespace maganement.CustomerSupplier
                         lblAddress.Controls.Add(new LiteralControl(_Chk.stringCheck("select Address" + st)));
 
                         ShowStockList();
-
+                        ShowStock();
                     }
                     else
                     {
@@ -53,7 +53,37 @@ namespace maganement.CustomerSupplier
         }
         private void ShowStock()
         {
-
+            string C_ID = Request.QueryString[""].ToString();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+            cmd.CommandText = @"SELECT  s_id
+      ,stock.stock_id
+      ,ProductName
+      ,BuyQuantity
+      ,BuyingPrice
+      ,Amount
+      ,Unit
+        FROM Stock,StockList
+where StockList.stock_id=Stock.stock_id and StockList.c_id="+C_ID;
+            con.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+            pnlShowStock.Controls.Clear(); int i = 1;string show = "";
+            while(dr.Read())
+            {
+                string stock_id = dr["stock_id"].ToString();
+                string ProductName = dr["ProductName"].ToString();
+                string BuyQuantity = dr["BuyQuantity"].ToString();
+                string BuyingPrice = dr["BuyingPrice"].ToString();
+                string Amount = dr["Amount"].ToString();
+                string Unit = dr["Unit"].ToString();
+                show += string.Format(@"<tr>
+                        <td>{0}</td>
+<td>{1}</td><td>{2}</td><td>{3}</td><td>{4}</td><td>{5}</td><td>{6}</td>
+                </tr>", i,stock_id,ProductName,Unit,BuyQuantity,BuyingPrice,Amount);
+                i++;
+            }
+            con.Close();
+            pnlShowStock.Controls.Add(new LiteralControl(show));
         }
         private void ShowStockList()
         {

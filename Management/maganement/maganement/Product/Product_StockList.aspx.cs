@@ -97,17 +97,27 @@ namespace maganement.Product
                 string Name = dr["Name"].ToString();
                 string CountProduct = dr["CountProduct"].ToString();
                 string Author = "";string Auther_activity = "";string Author_css = "";int b = 0;
+                string Sold_Css = "";string Return_product = "";
                 if (Activity == "True")
                 {
                     Author = "<i class='fa fa-dot-circle-o text-success'></i> Active <i class='caret'></i>";
                     Auther_activity = "Dective"; Author_css = "text-danger";
                     b = 0;
+                    Return_product = "<li><a href='../Return/Purchase_Add?sid="+ stock_id + "' title='Return' ><i class='fa fa-undo m-r-5'></i> Return</a></li>";
                 }
-                else
+                else if(Activity == "False")
                 {
                     Author = "<i class='fa fa-dot-circle-o text-danger'></i> Deactive <i class='caret'></i>";
                     Auther_activity = "Active"; Author_css = "text-success";
+                    Return_product = "<li><a href='../Return/Purchase_Add?sid=" + stock_id + "' title='Return' ><i class='fa fa-undo m-r-5'></i> Return</a></li>";
                     b = 1;
+                }
+                else if(Activity=="Sold")
+                {
+                    Author = "<i class='fa fa-times text-danger'></i> Sold";
+                    Auther_activity = ""; Author_css = "text-danger";
+                    Sold_Css = "style='display:none;' ";
+                    Return_product = "";
                 }
 
                 data += string.Format(@"<tr>
@@ -124,7 +134,7 @@ namespace maganement.Product
 													<a class='btn btn-white btn-sm rounded dropdown-toggle' href='#' data-toggle='dropdown' aria-expanded='false'>
 														{6}
 													</a>
-													<ul class='dropdown-menu pull-right'>	
+													<ul class='dropdown-menu pull-right' {10}>	
 														<li><a href='../Product/Product_StockList?cng_id={0}&auth={9}'><i class='fa fa-dot-circle-o {8}'></i> {7}</a></li>
 													</ul>
 												</div>
@@ -134,12 +144,12 @@ namespace maganement.Product
 													<a href='#' class='action-icon dropdown-toggle' data-toggle='dropdown' aria-expanded='false'><i class='fa fa-ellipsis-v'></i></a>
 													<ul class='dropdown-menu pull-right'>
 														<li><a href='../invoice/?sid={0}' title='Edit' ><i class='fa fa-pencil m-r-5'></i> Invoice</a></li>
-                                                        <li><a href='../Return/Purchase_Add?sid={0}' title='Return' ><i class='fa fa-undo m-r-5'></i> Return</a></li>
+                                                        {11}
 														<li><a href='../Product/Product_StockList?de={0}' title='Delete' ><i class='fa fa-trash-o m-r-5'></i> Delete</a></li>
 													</ul>
 												</div>
 											</td>
-										</tr>", stock_id,CountProduct,TotalAmount,TotalStock,InputDate,Name,Author,Auther_activity,Author_css,b);
+										</tr>", stock_id,CountProduct,TotalAmount,TotalStock,InputDate,Name,Author,Auther_activity,Author_css,b,Sold_Css,Return_product);
 
             }
             con.Close();

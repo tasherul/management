@@ -236,10 +236,13 @@ namespace maganement.Product
                     {
                         chk.stringCheck("insert into Stock (stock_id,p_id,ProductName,BuyQuantity,BuyingPrice,Amount,Unit) values('" + StockID + "'," + Stock.ProductCode + ", '" + Stock.ProductName + "', " + Stock.Quantity + "," + Stock.BuyingPrice + ", " + Stock.Amount + ",'" + Stock.Unit + "' )");
                     }
-                    chk.stringCheck(@"insert into StockList (stock_id,c_id,SuppliersName,Invoice,Remark,userid,InputDateTime,InputDate,TotalAmount,TotalStock,Activity) values('" + StockID + "',"+ddlSuppliers.SelectedValue.ToString()+",'"+ddlSuppliers.SelectedItem.ToString()+"','"+txtInvoice.Text+"','"+txtRemark.Text+"','"+Session["m_UserID"] +"','"+DateTime.Now.ToString()+"','"+DateTime.Now.ToString("dd MMMM yyyy") +"',"+txtTtotalAmount.Text+","+txtTotalStock.Text+",'True' )");
+                    chk.stringCheck(@"insert into StockList (stock_id,c_id,SuppliersName,Invoice,Remark,userid,InputDateTime,InputDate,TotalAmount,TotalStock,Activity) values('" + StockID + "',"+ddlSuppliers.SelectedValue.ToString()+",'"+ddlSuppliers.SelectedItem.ToString()== "Select Supplier" ? "Null": ddlSuppliers.SelectedItem.ToString() + "','"+txtInvoice.Text+"','"+txtRemark.Text+"','"+Session["m_UserID"] +"','"+DateTime.Now.ToString()+"','"+DateTime.Now.ToString("dd MMMM yyyy") +"',"+txtTtotalAmount.Text+","+txtTotalStock.Text+",'True' )");
                     StockAdd.Clear();
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Notify", "alert('Message : Product in your stock.');", true);
                     ShowDatainList();
+                    ddlSuppliers.SelectedValue = "0";
+                    txtInvoice.Text = "";
+                    txtRemark.Text = "";
                     //Response.Redirect("../Product/Product_Stock");
                 }
                 catch(Exception err)
