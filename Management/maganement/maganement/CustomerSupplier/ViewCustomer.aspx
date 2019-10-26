@@ -20,7 +20,7 @@
 								<div class="profile-view">
 									<div class="profile-img-wrap">
 										<div class="profile-img">
-											<a href="#"><img class="avatar" src="../image/customer.PNG" alt="Customer Image"/>
+											<a  href="#"><img class="avatar" src="../image/customer.PNG" alt="Customer Image"/>
                                                 
 											</a>
 										</div>
@@ -71,8 +71,8 @@
 						<div class="row user-tabs">
 							<div class="col-lg-12 col-md-12 col-sm-12 line-tabs">
 								<ul class="nav nav-tabs tabs nav-tabs-bottom">
-									<li class="active col-sm-3"><a data-toggle="tab" href="#myprojects">My Projects</a></li>
-									<li class="col-sm-3"><a data-toggle="tab" href="#tasks">Tasks</a></li>
+									<li class="active col-sm-3"><a data-toggle="tab" href="#myprojects">Sale Report</a></li>
+									<%--<li class="col-sm-3"><a data-toggle="tab" href="#tasks">Tasks</a></li>--%>
 								</ul>
 							</div>
 						</div>
@@ -82,6 +82,32 @@
 							<div class="tab-content  profile-tab-content">
 								<div id="myprojects" class="tab-pane fade in active">
 									
+                                    <div class="col-md-12">
+                                        <div class="">
+                                            <table class="table table-striped custom-table m-b-0 datatable">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Invoice</th>
+                                                        <th>Memo</th>
+                                                        <th>Product</th>
+                                                        <th>Quantity</th>
+                                                        <th>SubTotal</th>
+                                                        <th>Payment</th>
+                                                        <th>TotalDue</th>
+                                                        <th>SubmitDate</th>
+                                                        <th>Type</th>
+                                                        <th class="text-right">Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="myTable">
+                                                    <asp:PlaceHolder ID="pnlShow" runat="server"></asp:PlaceHolder>
+
+                                                    <%--      --%>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
                                    <%-- <div class="row">
 										<div class="col-lg-3 col-sm-4">
 											<div class="card-box project-box">
@@ -327,147 +353,11 @@
 
 
 								</div>
-								<div id="tasks" class="tab-pane fade">
-									<div class="project-task">
-										<div class="tabbable">
-											<ul class="nav nav-tabs nav-tabs-top nav-justified m-b-0">
-												<li class="active"><a href="#all_tasks" data-toggle="tab" aria-expanded="true">All Invoice</a></li>
-												<li><a href="#pending_tasks" data-toggle="tab" aria-expanded="false">Pending Payment</a></li>
-												<li><a href="#completed_tasks" data-toggle="tab" aria-expanded="false">Completed Payment</a></li>
-											</ul>
-											<div class="tab-content">
-												<div class="tab-pane active" id="all_tasks">
-													<div class="task-wrapper">
-														<div class="task-list-container">
-															<div class="task-list-body">
-																<ul id="task-list">
-																	<li class="task">
-																		<div class="task-container">
-																			<span class="task-action-btn task-check">
-																				<span class="action-circle large complete-btn" title="Mark Complete">
-																					<i class="material-icons">check</i>
-																				</span>
-																			</span>
-																			<span class="task-label" contenteditable="true">Patient appointment booking</span>
-																			<span class="task-action-btn task-btn-right">
-																				<span class="action-circle large" title="Assign">
-																					<i class="material-icons">person_add</i>
-																				</span>
-																				<span class="action-circle large delete-btn" title="Delete Task">
-																					<i class="material-icons">delete</i>
-																				</span>
-																			</span>
-																		</div>
-																	</li>
-																	<li class="task">
-																		<div class="task-container">
-																			<span class="task-action-btn task-check">
-																				<span class="action-circle large complete-btn" title="Mark Complete">
-																					<i class="material-icons">check</i>
-																				</span>
-																			</span>
-																			<span class="task-label" contenteditable="true">Appointment booking with payment gateway</span>
-																			<span class="task-action-btn task-btn-right">
-																				<span class="action-circle large" title="Assign">
-																					<i class="material-icons">person_add</i>
-																				</span>
-																				<span class="action-circle large delete-btn" title="Delete Task">
-																					<i class="material-icons">delete</i>
-																				</span>
-																			</span>
-																		</div>
-																	</li>
-																	<li class="completed task">
-																		<div class="task-container">
-																			<span class="task-action-btn task-check">
-																				<span class="action-circle large complete-btn" title="Mark Complete">
-																					<i class="material-icons">check</i>
-																				</span>
-																			</span>
-																			<span class="task-label">Doctor available module</span>
-																			<span class="task-action-btn task-btn-right">
-																				<span class="action-circle large" title="Assign">
-																					<i class="material-icons">person_add</i>
-																				</span>
-																				<span class="action-circle large delete-btn" title="Delete Task">
-																					<i class="material-icons">delete</i>
-																				</span>
-																			</span>
-																		</div>
-																	</li>
-																	<li class="task">
-																		<div class="task-container">
-																			<span class="task-action-btn task-check">
-																				<span class="action-circle large complete-btn" title="Mark Complete">
-																					<i class="material-icons">check</i>
-																				</span>
-																			</span>
-																			<span class="task-label" contenteditable="true">Patient and Doctor video conferencing</span>
-																			<span class="task-action-btn task-btn-right">
-																				<span class="action-circle large" title="Assign">
-																					<i class="material-icons">person_add</i>
-																				</span>
-																				<span class="action-circle large delete-btn" title="Delete Task">
-																					<i class="material-icons">delete</i>
-																				</span>
-																			</span>
-																		</div>
-																	</li>
-																	<li class="task">
-																		<div class="task-container">
-																			<span class="task-action-btn task-check">
-																				<span class="action-circle large complete-btn" title="Mark Complete">
-																					<i class="material-icons">check</i>
-																				</span>
-																			</span>
-																			<span class="task-label" contenteditable="true">Private chat module</span>
-																			<span class="task-action-btn task-btn-right">
-																				<span class="action-circle large" title="Assign">
-																					<i class="material-icons">person_add</i>
-																				</span>
-																				<span class="action-circle large delete-btn" title="Delete Task">
-																					<i class="material-icons">delete</i>
-																				</span>
-																			</span>
-																		</div>
-																	</li>
-																	<li class="task">
-																		<div class="task-container">
-																			<span class="task-action-btn task-check">
-																				<span class="action-circle large complete-btn" title="Mark Complete">
-																					<i class="material-icons">check</i>
-																				</span>
-																			</span>
-																			<span class="task-label" contenteditable="true">Patient Profile add</span>
-																			<span class="task-action-btn task-btn-right">
-																				<span class="action-circle large" title="Assign">
-																					<i class="material-icons">person_add</i>
-																				</span>
-																				<span class="action-circle large delete-btn" title="Delete Task">
-																					<i class="material-icons">delete</i>
-																				</span>
-																			</span>
-																		</div>
-																	</li>
-																</ul>
-															</div>
-															<div class="task-list-footer">
-																<div class="new-task-wrapper">
-																	<textarea  id="new-task" placeholder="Enter new task here. . ."></textarea>
-																	<span class="error-message hidden">You need to enter a task first</span>
-																	<span class="add-new-task-btn btn" id="add-task">Add Task</span>
-																	<span class="cancel-btn btn" id="close-task-panel">Close</span>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="tab-pane" id="pending_tasks"></div>
-												<div class="tab-pane" id="completed_tasks"></div>
-											</div>
-										</div>
-									</div>
-								</div>
+								
+
+
+
+
 							</div>
 						</div>
 					</div>

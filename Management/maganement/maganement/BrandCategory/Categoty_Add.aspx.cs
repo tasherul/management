@@ -106,9 +106,10 @@ namespace maganement.BrandCategory
                 lblResult.Text = "<div class='alert alert-danger'><span>Type Category Name.</span></div> ";
             }
         }
-
         protected void btnUpdateCategory_Click(object sender, EventArgs e)
         {
+            
+
             if (txtCategoryName.Text != "")
             {
                 string CategoryName = txtCategoryName.Text;

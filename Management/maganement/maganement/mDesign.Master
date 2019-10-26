@@ -28,8 +28,9 @@
         <div class="main-wrapper">
             <div class="header">
                 <div class="header-left">
-                    <a href="index.html" class="logo">
-						<img src="../assets/img/logo.png" width="40" height="40" alt="">
+                    <a class="logo">
+                        <asp:Image ID="logo" Width="40" Height="40" runat="server" />
+						<%--<img src="../assets/img/logo.png" width="40" height="40" alt="">--%>
 					</a>
                 </div>
 				<a id="toggle_btn" href="javascript:void(0);"><i class="la la-bars"></i></a>
@@ -42,7 +43,7 @@
                 </div>
 				<a id="mobile_btn" class="mobile_btn pull-left" href="#sidebar"><i class="fa fa-bars" aria-hidden="true"></i></a>
 				<ul class="nav navbar-nav navbar-right user-menu pull-right">
-					<li class="dropdown hidden-xs">
+					<%--<li class="dropdown hidden-xs">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell-o"></i> <span class="badge bg-purple pull-right">3</span></a>
 						<div class="dropdown-menu notifications">
 							<div class="topnav-dropdown-header">
@@ -116,9 +117,9 @@
 					</li>
 					<li class="dropdown hidden-xs">
 						<a href="javascript:;" id="open_msg_box" class="hasnotifications"><i class="fa fa-comment-o"></i> <span class="badge bg-purple pull-right">8</span></a>
-					</li>	
+					</li>	--%>
 					<li class="dropdown">
-						<a href="profile.html" class="dropdown-toggle user-link" data-toggle="dropdown" title="Admin">
+						<a href="#" class="dropdown-toggle user-link" data-toggle="dropdown" title="Admin">
 							<span class="user-img">
                                 <asp:Image ID="ProfilePhoto" CssClass="img-circle" Width="40"  runat="server" />
 							<span class="status online"></span></span>
@@ -127,9 +128,9 @@
 							<i class="caret"></i>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="#">My Profile</a></li>
+							<%--<li><a href="#">My Profile</a></li>
 							<li><a href="#">Edit Profile</a></li>
-							<li><a href="#">Settings</a></li>
+							<li><a href="#">Settings</a></li>--%>
 							<li><a href="../Logout">Logout</a></li>
 						</ul>
 					</li>
@@ -179,9 +180,9 @@
 							<li class="submenu">
 								<a href="#"  ><i class="la la-cart-plus"></i> <span>Product Sale</span><span class="menu-arrow"></span>  </a>
 								<ul style="display: none;">
-									<li><a href="#">Wholesale</a></li>
-									<li><a href="#">Retailer</a></li>
-									<li><a href="#">Sale List</a></li>
+									<li><a href="../Sale/ProductSale?=Wholesale">Wholesale</a></li>
+									<li><a href="../Sale/ProductSale?=Retailer">Retailer</a></li>
+									<li><a href="../Sale/SaleList">Sale List</a></li>
 								</ul>
 							</li>
 							
@@ -189,31 +190,29 @@
 								<a href="#"  ><i class="la la-caret-left"></i> <span> Return</span><span class="menu-arrow"></span>  </a>
 								<ul style="display: none;">								
 									<li><a href="../Return/Purchase_Add">Purchase</a></li>
-									<li><a href="#">Return Purchase List</a></li>
- 								
+									<li><a href="../Return/ReturnList">Return Purchase List</a></li> 								
 								</ul>
 							</li>
 							
 							<li class="submenu">
 								<a href="#"><i class="la la-money"></i> <span>Expanse</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
-									<li><a href="#"> Expense Catagory</a></li>
-									<li><a href="#"> Catagory List</a></li>
-									<li><a href="#">ADD Expense </a></li> 
+									<li><a href="../Expanse/ExpanseCategory"> Expense Catagory</a></li>									
+									<li><a href="../Expanse/ExpanseAdd">ADD Expense</a></li> 
 								</ul>
 							</li>
 							
-							<li class="submenu">
+						<%--	<li class="submenu">
 								<a href="#"><i class="la la-ship"></i> <span>Transfer</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
 									<li><a href="#"> Add Transfer</a></li>
 									<li><a href="#"> Transfer List</a></li>
  
 								</ul>
-							</li>
+							</li>--%>
 							
 							<li class="submenu">
-								<a href="#"  ><i class="la la-pie-chart"></i> <span>Reporting</span> <span class="menu-arrow"></span></a>
+								<a href="#"><i class="la la-pie-chart"></i> <span>Reporting</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
 									<li><a href="#">Profit</a></li>
 									<li><a href="#">Expense</a></li>									
@@ -266,14 +265,14 @@
 								</ul>
 							</li>--%>
 							
-							<li class="submenu">
+							<%--<li class="submenu">
 								<a href="#"><i class="la la-barcode"></i> <span>Barcode</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
-									<li><a href="#">Generate Barcode</a></li>
+									<li><a href="../Barcode/GenerateBarcode">Generate Barcode</a></li>
 									<li><a href="#">Barcode Settings</a></li>
 									 
 								</ul>
-							</li>
+							</li>--%>
 							
 						<%--	<li class="submenu">
 								<a href="#"><i class="la la-cloud-upload"></i> <span>Product Online</span> <span class="menu-arrow"></span></a>
@@ -288,10 +287,12 @@
 								</ul>
 							</li>--%>
 							
-						 
-							<li class="submenu">
-								<a href="#"><i class="la la-cog"></i> <span>Settings</span> </a>
-								<ul style="display: none;">
+						 <li > 
+								<a href="../Settings/settings"><i class="la la-cog"></i> <span>Settings</span></a>
+							</li>
+							
+						
+								<%--<ul style="display: none;">
 									<li><a href="#">Tax</a></li>
 									<li><a href="#">Unit</a></li>
 									<li><a href="#">SMS</a></li>
@@ -299,8 +300,8 @@
 									<li><a href="#">Report</a></li>
 									<li><a href="#">Main</a></li>
 									<li><a href="#">Profile</a></li>
-								</ul>
-							</li>
+								</ul>--%>
+							
 
 							<%--<li> 
 								<a href="#"><i class="la la-group"></i> <span>Refference</span></a>

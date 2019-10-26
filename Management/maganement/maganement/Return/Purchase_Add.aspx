@@ -1,6 +1,41 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="Purchase_Add.aspx.cs" Inherits="maganement.Return.Purchase_Add" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Purchase Add</title>
+    <script type="text/javascript">
+        function Sum() {
+            var ReturnIteams = parseInt(document.getElementById('Body_txtReturnIteams').value);
+            var AvaiableIteams = parseInt(document.getElementById('Body_txtAvaiableStock').value);
+            if (ReturnIteams <= AvaiableIteams)
+            {
+                var ReturnIPrice = parseInt(document.getElementById('Body_txtBuyingPrice').value);
+                //var ReturnIAmount = parseInt(document.getElementById('Body_txtAmount').value);
+
+                var total = ReturnIPrice * ReturnIteams;
+                $('#Body_txtAmount').val(total);
+
+            }
+            else
+            {
+                $('#Body_txtAmount').val("");
+            }
+
+        };
+
+         
+
+        function Sum2() {
+            var ReturnIteams = parseInt(document.getElementById('Body_txtReturnIteams').value);
+            var AvaiableIteams = parseInt(document.getElementById('Body_txtAvaiableStock').value);
+            if (ReturnIteams <= AvaiableIteams) {
+                var ReturnIPrice = parseInt(document.getElementById('Body_txtBuyingPrice').value);
+                var ReturnIAmount = parseInt(document.getElementById('Body_txtAmount').value);
+
+                var total = ReturnIAmount / ReturnIteams;
+                $('#Body_txtBuyingPrice').val(total);
+
+            }
+        };
+        </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Body" runat="server">
      <div class="page-wrapper">
@@ -16,61 +51,80 @@
 
             </div>
 
-
+           
             <div class="row filter-row">
                 <div class="col-sm-4 col-xs-6">
-                    <div class="form-group form-focus select-focus">
+                    <div class="form-group form-focus select-focus ">
                         <label class="control-label dColor">Product <span class="req">*</span></label>
-                        <asp:DropDownList OnTextChanged="ddlProduct_TextChanged" AutoPostBack="true" CssClass="floating form-control"  ID="ddlProduct" runat="server"></asp:DropDownList>
+                        <asp:DropDownList  OnTextChanged="ddlProduct_TextChanged" AutoPostBack="true" CssClass="floating form-control"  ID="ddlProduct" runat="server"></asp:DropDownList>
+                    </div>
+                </div>   
+                 <div class="col-sm-2 col-xs-6">
+                    <div class="form-group form-focus" id="pnlReturnIteams" runat="server">
+                        <label class="control-label">Return Iteams</label>
+                        <asp:TextBox ID="txtReturnIteams" onkeyup="Sum()" CssClass="form-control floating" TextMode="Number" runat="server"></asp:TextBox>
                     </div>
                 </div>
-                <div class="col-sm-3 col-xs-6">
-                    <div class="form-group form-focus">
-                        <label class="control-label dColor">Buy Quantity<span class="req">*</span></label>
-                        <asp:TextBox ID="txtBuyQuantity"  CssClass="form-control floating" TextMode="Number" runat="server"></asp:TextBox>
+                <div class="col-sm-4 col-xs-6">
+                    <div class="form-group" id="pnlRemark" runat="server">
+                        
+                        <asp:TextBox ID="txtRemark" placeholder="short details for return product" CssClass="form-control " TextMode="MultiLine" runat="server"></asp:TextBox>
                     </div>
-                </div>
-                <div class="col-sm-2"></div>
-
-
-
-            </div>
-            <div class="row filter-row">
+                </div>   
                 <div class="col-sm-2 col-xs-6">
-                    <div class="form-group form-focus">
-                        <label class="control-label dColor">Unit</label>
-                        <asp:TextBox ID="txtUnit" ForeColor="Green" Font-Bold="true" Enabled="false" CssClass="form-control floating" runat="server">Null</asp:TextBox>
+                    <div class="form-group form-focus" id="pnlPreviousReturn" runat="server">
+                        <label class="control-label">Previus Return</label>
+                        <asp:TextBox ID="txtPreviousReturn" Enabled="false" ForeColor="Green" Font-Bold="true" CssClass="form-control floating" TextMode="Number" runat="server"></asp:TextBox>
                     </div>
-                </div>
-                <div class="col-sm-2 col-xs-6">
-                    <div class="form-group form-focus">
-                        <label class="control-label dColor">Buying Price</label>
-                        <asp:TextBox ID="txtBuyingPrice" onkeyup="Sum()" ForeColor="Green" Font-Bold="true" CssClass="form-control floating" runat="server">0</asp:TextBox>
-                    </div>
-                </div>
-                <div class="col-sm-2 col-xs-6">
-                    <div class="form-group form-focus">
-                        <label class="control-label dColor">Total Stock</label>
-                        <asp:TextBox ID="txtTotalStock" ForeColor="Green" Font-Bold="true" Enabled="false" CssClass="form-control floating" runat="server">0</asp:TextBox>
-                    </div>
-                </div>
-                <div class="col-sm-2 col-xs-6">
-                    <div class="form-group form-focus">
-                        <label class="control-label dColor">Amount</label>
-                        <asp:TextBox ID="txtAmount" ForeColor="Green" Font-Bold="true" onkeyup="SumAmount()" CssClass="form-control floating" runat="server">0</asp:TextBox>
-                    </div>
-                </div>
-                <div class="col-sm-2 col-xs-6">
-                    <div class="form-group form-focus">
-                        <label class="control-label dColor">Total Amount</label>
-                        <asp:TextBox ID="txtTtotalAmount" ForeColor="Green" Font-Bold="true" Enabled="false" CssClass="form-control floating" runat="server">0</asp:TextBox>
-                    </div>
-                </div>
-
-                <div class="col-sm-2 col-xs-6">
-                    <asp:Button ID="btnStockAdd"  CssClass="btn btn-success btn-block" runat="server" Text="Add" />
                 </div>
             </div>
+
+            <asp:Panel ID="pnlShowRetuen" runat="server">
+                <div class="row filter-row">
+                    <div class="col-sm-2 col-xs-6">
+                        <div class="form-group form-focus">
+                            <label class="control-label dColor">Unit</label>
+                            <asp:TextBox ID="txtUnit" ForeColor="Green" Font-Bold="true" Enabled="false" CssClass="form-control floating" runat="server">Null</asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-xs-6">
+                        <div class="form-group form-focus">
+                            <label class="control-label dColor">Return Price</label>
+                            <asp:TextBox ID="txtBuyingPrice" onkeyup="Sum()" ForeColor="Green" Font-Bold="true" CssClass="form-control floating" runat="server">0</asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-xs-6">
+                        <div class="form-group form-focus">
+                            <label class="control-label dColor">Avaiable Stock</label>
+                            <asp:TextBox ID="txtAvaiableStock" ForeColor="Green" Font-Bold="true" Enabled="false" CssClass="form-control floating" runat="server">0</asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-xs-6">
+                        <div class="form-group form-focus">
+                            <label class="control-label dColor">Amount</label>
+                            <asp:TextBox ID="txtAmount" ForeColor="Green" onkeyup="Sum2()" Font-Bold="true" CssClass="form-control floating" runat="server">0</asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-xs-6" id="pnlSaleIteams" runat="server">
+                        <div class="form-group form-focus">
+                            <label class="control-label dColor">Sale Itams</label>
+                            <asp:TextBox ID="txtSaleIteams" Enabled="false" ForeColor="Green" Font-Bold="true" CssClass="form-control floating" runat="server">0</asp:TextBox>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-2 col-xs-6">
+                        <asp:Button ID="btnReturn" OnClick="btnReturn_Click" CssClass="btn btn-success btn-block" runat="server" Text="Return" />
+                    </div>
+
+
+
+
+
+
+
+                </div>
+            </asp:Panel>
 
             <div class="row">
                 <div class="col-md-12">                
@@ -86,73 +140,26 @@
                                     <th>Unit</th>
                                     <th>InputDate</th>
                                     <th>Suppliers Name</th>
-                                    <th>Status</th>    
+                                    <th>Status</th> 
+                                    <th>Act</th>   
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <asp:PlaceHolder ID="ShowData" runat="server"></asp:PlaceHolder>
-                                    </tr>
-                               <%-- <tr>
-                                    <td>
-                                        <a class='circle m-r-10 dColor'>1.</a>
-                                        <h2>Global Technologies</h2>
-                                    </td>
-                                    <td>100</td>
-                                    <td>Pics</td>
-                                    <td>500</td>
-                                    <td>50000</td>
-                                    <td>
-                                        <div class='dropdown action-label'>
-                                            <a class='btn btn-white btn-sm rounded dropdown-toggle' data-toggle='dropdown' aria-expanded='false'><i class='fa fa-dot-circle-o text-success'></i>Active <i class='caret'></i></a>
-                                            <ul class='dropdown-menu'>
-                                                <li><a href='#'><i class='fa fa-dot-circle-o text-success'></i>Active</a></li>
-                                                <li><a href='#'><i class='fa fa-dot-circle-o text-danger'></i>Delete</a></li>
-                                            </ul>
-                                        </div>
-                                    </td>                                    
-                                </tr>--%>
-
-
+                                </tr> 
                             </tbody>
                         </table>
              
                 </div>
             </div>
+         
 
-            <div class="row filter-row">
-
-                <div class="col-sm-3 col-xs-6">
-                    <div class="form-group form-focus select-focus">
-                        <label class="control-label dColor">Suppliers (Optional) </label>
-                        <asp:DropDownList CssClass="floating form-control" ID="ddlSuppliers" runat="server"></asp:DropDownList>
-                    </div>
-                </div>
-
-                <div class="col-sm-2 col-xs-6">
-                    <div class="form-group form-focus">
-                        <label class="dColor control-label">Invoice</label>
-                        <asp:TextBox ID="txtInvoice" CssClass="form-control floating" runat="server"></asp:TextBox>
-                    </div>
-                </div>
-                <div class="col-sm-3 col-xs-6">
-                    <div class="form-group form-focus">
-                        <label class="control-label dColor">Remark</label>
-                        <asp:TextBox ID="txtRemark" CssClass="form-control floating" Height="100" TextMode="MultiLine" runat="server"></asp:TextBox>
-                    </div>
-                </div>
-                 <div class="col-sm-2"></div>
-
-            <div class="col-sm-2 col-xs-6">
-                    <asp:Button ID="btnSubmit"  CssClass="btn btn-success btn-block" runat="server" Text="Submit" />
-                </div>
-
-            </div>
            
 
         </div>
     </div>
-    <div class="sidebar-overlay" data-reff="#sidebar"></div>
+  <div class="sidebar-overlay" data-reff="#sidebar"></div>
         <script type="text/javascript" src="assets/js/jquery-3.2.1.min.js"></script>
         <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="assets/js/jquery.dataTables.min.js"></script>
@@ -160,5 +167,6 @@
 		<script type="text/javascript" src="assets/js/jquery.slimscroll.js"></script>
 		<script type="text/javascript" src="assets/js/select2.min.js"></script>
 		<script type="text/javascript" src="assets/js/moment.min.js"></script>
+		<script type="text/javascript" src="assets/js/bootstrap-datetimepicker.min.js"></script>
 		<script type="text/javascript" src="assets/js/app.js"></script>
 </asp:Content>

@@ -58,7 +58,7 @@ namespace maganement
                 SqlCommand newCmd = new SqlCommand();
                 newCmd.Connection = Conn;
                 newCmd.CommandText = CommandText;
-                int ReturnValue = Convert.ToInt32(newCmd.ExecuteScalar().ToString());
+                int ReturnValue =  Convert.ToInt32(newCmd.ExecuteScalar().ToString());
                 Conn.Close();
                 return ReturnValue;
             }
@@ -109,14 +109,14 @@ namespace maganement
                     string returnValue = newCmd.ExecuteScalar().ToString();
                     Conn.Close();
                     return returnValue;
-                }
-                catch (Exception error)
-                {
-                    Conn.Close();
-                    return error.Message;
-                }
-
             }
+                        catch (Exception error)
+            {
+                Conn.Close();
+                return error.Message;
+            }
+
+        }
         }
         public string stringCheck(string CommandText)
         {

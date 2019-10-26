@@ -148,7 +148,15 @@ namespace maganement.Product
         {
             if(txtBuyQuantity.Text!="")
             {
-                int length = StockAdd.Count;
+                bool ProductCheck = false;
+                foreach (StockDetails Stock in StockAdd)
+                {
+                    if(Stock.ProductCode==ddlProduct.SelectedValue.ToString())
+                    {
+                        ProductCheck = true;
+                    }
+                }
+                    int length = StockAdd.Count;
                 //for(int i=0;i<length+1;i++)
                 //{
                 //_CreateStock[i].ID = i;
@@ -157,25 +165,33 @@ namespace maganement.Product
                 //_CreateStock[i].Quantity = Convert.ToInt32(txtBuyQuantity.Text);
                 //_CreateStock[i].BuyingPrice = Convert.ToInt32(txtBuyingPrice.Text);
                 //_CreateStock[i].Amount = Convert.ToInt32(txtAmount.Text);
-                StockAdd.Add(new StockDetails() {
-                    ID = length,
-                    ProductName = ddlProduct.SelectedItem.ToString(),
-                    ProductCode = ddlProduct.SelectedValue.ToString(),
-                    Quantity = Convert.ToInt32(txtBuyQuantity.Text),
-                    BuyingPrice = Convert.ToDouble(txtBuyingPrice.Text),
-                    Amount = Convert.ToDouble(txtAmount.Text),
-                    Unit = txtUnit.Text
-                });
-                //}
-                ddlProduct.SelectedValue = "0";
-                txtBuyQuantity.Text = "";
-                txtBuyQuantity.Enabled = false;
-                txtAmount.Text = "0";
-                txtBuyingPrice.Text = "0";
-                txtUnit.Text = "Null";
-                txtBuyingPrice.Enabled = false;
-                txtAmount.Enabled = false;
-                ShowDatainList();
+                if (!ProductCheck)
+                {
+                    StockAdd.Add(new StockDetails()
+                    {
+                        ID = length,
+                        ProductName = ddlProduct.SelectedItem.ToString(),
+                        ProductCode = ddlProduct.SelectedValue.ToString(),
+                        Quantity = Convert.ToInt32(txtBuyQuantity.Text),
+                        BuyingPrice = Convert.ToDouble(txtBuyingPrice.Text),
+                        Amount = Convert.ToDouble(txtAmount.Text),
+                        Unit = txtUnit.Text
+                    });
+                    //}
+                    ddlProduct.SelectedValue = "0";
+                    txtBuyQuantity.Text = "";
+                    txtBuyQuantity.Enabled = false;
+                    txtAmount.Text = "0";
+                    txtBuyingPrice.Text = "0";
+                    txtUnit.Text = "Null";
+                    txtBuyingPrice.Enabled = false;
+                    txtAmount.Enabled = false;
+                    ShowDatainList();
+                }
+                else
+                {
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Notify", "alert('Messege: Already Insert "+ddlProduct.SelectedItem.ToString()+" Product.');", true);
+                }
 
             }
 
@@ -231,23 +247,50 @@ namespace maganement.Product
                 {
                     RandomNumber RN = new RandomNumber();
                     RN.Number = true;
+                    RN.HowMuchNumber = chk.int32Check("select ValueInt from Settings where id=1");
+                    string activity = "True";
                     string StockID = RN.RandomStringNumber("StockID");
                     foreach (StockDetails Stock in StockAdd)
                     {
-                        chk.stringCheck("insert into Stock (stock_id,p_id,ProductName,BuyQuantity,BuyingPrice,Amount,Unit) values('" + StockID + "'," + Stock.ProductCode + ", '" + Stock.ProductName + "', " + Stock.Quantity + "," + Stock.BuyingPrice + ", " + Stock.Amount + ",'" + Stock.Unit + "' )");
+                        chk.boolCheck("insert into Stock (stock_id,p_id,ProductName,BuyQuantity,BuyingPrice,Amount,Unit) values('" + StockID + "'," + Stock.ProductCode + ", '" + Stock.ProductName + "', " + Stock.Quantity + "," + Stock.BuyingPrice + ", " + Stock.Amount + ",'" + Stock.Unit + "' )");
                     }
-                    chk.stringCheck(@"insert into StockList (stock_id,c_id,SuppliersName,Invoice,Remark,userid,InputDateTime,InputDate,TotalAmount,TotalStock,Activity) values('" + StockID + "',"+ddlSuppliers.SelectedValue.ToString()+",'"+ddlSuppliers.SelectedItem.ToString()== "Select Supplier" ? "Null": ddlSuppliers.SelectedItem.ToString() + "','"+txtInvoice.Text+"','"+txtRemark.Text+"','"+Session["m_UserID"] +"','"+DateTime.Now.ToString()+"','"+DateTime.Now.ToString("dd MMMM yyyy") +"',"+txtTtotalAmount.Text+","+txtTotalStock.Text+",'True' )");
+                    //string s =  chk.stringCheck(@"insert into StockList(stock_id,c_id,SuppliersName,Invoice,Remark,userid,InputDateTime,InputDate,TotalAmount,TotalStock,Activity)  values ('" + StockID + "',"+ Convert.ToInt32(ddlSuppliers.SelectedValue.ToString())+",'"+ddlSuppliers.SelectedItem.ToString()== "Select Supplier" ? "Null": ddlSuppliers.SelectedItem.ToString() + "' , '"+txtInvoice.Text+"' , '"+txtRemark.Text+"' , '"+Session["m_UserID"].ToString() +"'  , '"+DateTime.Now.ToString()+"' , '"+DateTime.Now.ToString("dd MMMM yyyy") +"' , "+Convert.ToDouble(txtTtotalAmount.Text)+" , "+Convert.ToDouble(txtTotalStock.Text)+" , '"+activity+"'  )");
+                    string Error = "";
+                //try
+                //{
+                    SqlCommand cmd = new SqlCommand();
+                        cmd.Connection = con;
+                        cmd.CommandText = "insert into StockList (stock_id,c_id,SuppliersName,Invoice,Remark,userid,InputDateTime,InputDate,TotalAmount,TotalStock,Activity) values(@stock_id,@c_id,@SuppliersName,@Invoice,@Remark,@userid,@InputDateTime,@InputDate,@TotalAmount,@TotalStock,@Activity)";
+                        cmd.Parameters.AddWithValue("@stock_id", StockID);
+                        cmd.Parameters.AddWithValue("@c_id", Convert.ToInt32(ddlSuppliers.SelectedValue.ToString()));
+                        cmd.Parameters.AddWithValue("@SuppliersName", ddlSuppliers.SelectedItem.ToString() == "Select Supplier" ? "Null" : ddlSuppliers.SelectedItem.ToString());
+                        cmd.Parameters.AddWithValue("@Invoice", txtInvoice.Text);
+                        cmd.Parameters.AddWithValue("@Remark", txtRemark.Text);
+                        cmd.Parameters.AddWithValue("@userid", Session["m_UserID"].ToString());
+                        cmd.Parameters.AddWithValue("@InputDateTime", DateTime.Now.ToString());
+                        cmd.Parameters.AddWithValue("@InputDate", DateTime.Now.ToString("dd MMMM yyyy"));
+                        cmd.Parameters.AddWithValue("@TotalAmount", Convert.ToDouble(txtTtotalAmount.Text));
+                        cmd.Parameters.AddWithValue("@TotalStock", Convert.ToDouble(txtTotalStock.Text));
+                        cmd.Parameters.AddWithValue("@Activity", activity);
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                    //}
+                    //catch (Exception er)
+                    //{
+                    //    Error = "Error:" + er.Message;
+                    //}
                     StockAdd.Clear();
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Notify", "alert('Message : Product in your stock.');", true);
                     ShowDatainList();
                     ddlSuppliers.SelectedValue = "0";
                     txtInvoice.Text = "";
-                    txtRemark.Text = "";
+                    txtRemark.Text ="";
                     //Response.Redirect("../Product/Product_Stock");
                 }
-                catch(Exception err)
+                catch (Exception err)
                 {
-                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Notify", "alert('Message : "+err.Message+"');", true);
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Notify", "alert('Message : " + err.ToString() + "');", true);
                 }
             }
             else

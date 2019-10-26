@@ -38,6 +38,9 @@ namespace maganement.CustomerSupplier
                 }
                 if(Request.QueryString["de_id"]!=null)
                 {
+
+
+
                     pnlDelete.Visible = false;
                     btnCreate.Visible = false;
                     btnUpdate.Visible = false;

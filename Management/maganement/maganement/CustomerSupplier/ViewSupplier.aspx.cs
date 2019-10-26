@@ -35,6 +35,7 @@ namespace maganement.CustomerSupplier
 
                         ShowStockList();
                         ShowStock();
+                        showReturn();
                     }
                     else
                     {
@@ -51,6 +52,60 @@ namespace maganement.CustomerSupplier
 
 
         }
+        Check _chk = new Check();
+
+        private void showReturn()
+        {
+            string ID = Request.QueryString[""].ToString();
+            pnlShow.Controls.Clear();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+            cmd.CommandText = "select * from ReturnProduct where c_id="+ ID;
+            con.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+            int num = 1; string ShowD = "";
+            while (dr.Read())
+            {
+                string ProductName = dr["ProductName"].ToString();
+                string sc_id = dr["sc_id"].ToString();
+                string s_id = dr["s_id"].ToString();
+                string c_id = dr["c_id"].ToString();
+                string ReturnPrice = dr["ReturnPrice"].ToString();
+                string RetuenIteam = dr["RetuenIteam"].ToString();
+                string Amount = dr["Amount"].ToString();
+                string InputDate = dr["InputDate"].ToString();
+                string p_id = dr["p_id"].ToString();
+                string r_id = dr["r_id"].ToString();
+
+                ShowD += string.Format(@"<tr>
+											<td>{0}</td>
+											<td>{1}</td>
+											<td>{2}</td>
+											<td>{3}</td>
+											<td>{4}</td>
+											<td>{5}</td>
+                                            <td>{6}</td>											
+										</tr>", num, ProductName, RetuenIteam, ReturnPrice, Amount, InputDate, _chk.stringCheck("select Unit from ProductAdd where p_id=" + p_id.ToString()));
+                num++;
+            }
+            con.Close();
+            pnlShow.Controls.Add(new LiteralControl(ShowD));
+
+
+            /* 
+             <td class='text-right'>
+												<div class='dropdown'>
+													<a href='#' class='action-icon dropdown-toggle' data-toggle='dropdown' aria-expanded='false'><i class='fa fa-ellipsis-v'></i></a>
+													<ul class='dropdown-menu pull-right'>
+														<li><a href='../Invoice/Return?={8}' title='Invoice'><i class='fa fa-pencil m-r-5'></i> Invoice</a></li>
+														<li><a href='../Return/Purchase_Add?de_id={8}' title='Delete'><i class='fa fa-trash-o m-r-5'></i> Delete</a></li>
+													</ul>
+												</div>
+											</td>
+             
+             */
+        }
+
         private void ShowStock()
         {
             string C_ID = Request.QueryString[""].ToString();

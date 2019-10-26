@@ -49,7 +49,7 @@ namespace maganement.Product
 
                     if(Chk.int32CheckSecurity("select count(*) from StockList where stock_id='"+StockID+"' ", 1))
                     {
-                        Chk.stringCheck("update StockList set Activity='"+Auth+ "' where stock_id='" + StockID + "' ");
+                        Chk.boolCheck("update StockList set Activity='"+Auth+ "' where stock_id='" + StockID + "' ");
                         Response.Redirect("../Product/Product_StockList");
 
 
@@ -67,7 +67,24 @@ namespace maganement.Product
             }
 
         }
-
+        private int saleCount(int s_id)
+        {
+            using (SqlConnection cons = new SqlConnection(ConfigurationManager.ConnectionStrings["dbm"].ConnectionString))
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cons;
+                cmd.CommandText = "select * from SaleProductList where s_id=" + s_id;
+                cons.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                int count = 0;
+                while (dr.Read())
+                {
+                    count += Convert.ToInt32(dr["Quantity"].ToString());
+                }
+                cons.Close();
+                return count;
+            }
+        }
         private void Show()
         {
             SqlCommand cmd = new SqlCommand();
@@ -103,13 +120,13 @@ namespace maganement.Product
                     Author = "<i class='fa fa-dot-circle-o text-success'></i> Active <i class='caret'></i>";
                     Auther_activity = "Dective"; Author_css = "text-danger";
                     b = 0;
-                    Return_product = "<li><a href='../Return/Purchase_Add?sid="+ stock_id + "' title='Return' ><i class='fa fa-undo m-r-5'></i> Return</a></li>";
+                    Return_product = "<li><a href='../Return/Purchase_Add?sid="+ stock_id + "' title='Return' ><i class='fa fa-undo m-r-5'></i> Return</a></li><li><a href='../Barcode/GenerateBarcode?Stockid=" + stock_id + "' title='Barcode'><i class='fa fa-barcode m-r-5'></i> Barcode</a></li>";
                 }
                 else if(Activity == "False")
                 {
                     Author = "<i class='fa fa-dot-circle-o text-danger'></i> Deactive <i class='caret'></i>";
                     Auther_activity = "Active"; Author_css = "text-success";
-                    Return_product = "<li><a href='../Return/Purchase_Add?sid=" + stock_id + "' title='Return' ><i class='fa fa-undo m-r-5'></i> Return</a></li>";
+                    Return_product = "<li><a href='../Return/Purchase_Add?sid=" + stock_id + "' title='Return' ><i class='fa fa-undo m-r-5'></i> Return</a></li><li><a href='../Barcode/GenerateBarcode?Stockid=" + stock_id + "' title='Barcode'><i class='fa fa-barcode m-r-5'></i> Barcode</a></li>";
                     b = 1;
                 }
                 else if(Activity=="Sold")
@@ -117,7 +134,7 @@ namespace maganement.Product
                     Author = "<i class='fa fa-times text-danger'></i> Sold";
                     Auther_activity = ""; Author_css = "text-danger";
                     Sold_Css = "style='display:none;' ";
-                    Return_product = "";
+                    Return_product = "<li><a href='../Barcode/GenerateBarcode?Stockid=" + stock_id + "' title='Barcode'><i class='fa fa-barcode m-r-5'></i> Barcode</a></li>";
                 }
 
                 data += string.Format(@"<tr>
@@ -143,7 +160,7 @@ namespace maganement.Product
 												<div class='dropdown'>
 													<a href='#' class='action-icon dropdown-toggle' data-toggle='dropdown' aria-expanded='false'><i class='fa fa-ellipsis-v'></i></a>
 													<ul class='dropdown-menu pull-right'>
-														<li><a href='../invoice/?sid={0}' title='Edit' ><i class='fa fa-pencil m-r-5'></i> Invoice</a></li>
+														<li><a href='../invoice/Stock?={0}' title='Edit' ><i class='fa fa-pencil m-r-5'></i> Invoice</a></li>
                                                         {11}
 														<li><a href='../Product/Product_StockList?de={0}' title='Delete' ><i class='fa fa-trash-o m-r-5'></i> Delete</a></li>
 													</ul>

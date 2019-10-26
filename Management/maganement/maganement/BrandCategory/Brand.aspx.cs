@@ -153,6 +153,7 @@ namespace maganement.BrandCategory
             if (ddlCategory.SelectedValue != "0" && ddlWirehouse.SelectedValue != "0" && txtBrandName.Text != "" && ddlSubCategory.SelectedValue!="0")
             {
                 string CategoryName = txtBrandName.Text;
+                _Anti.Url = true;
                 if (_Anti.StringData(CategoryName))
                 {
                     if (_chk.int32Check("select count(*) from Brand where SubCategory_id='" + ddlSubCategory.SelectedValue.ToString() + "' and BrandName='" + txtBrandName.Text + "'  ") == 0)

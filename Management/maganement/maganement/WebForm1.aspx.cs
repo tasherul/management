@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Drawing.Imaging;
+using System.Drawing.Text;
+
+
 
 namespace maganement
 {
@@ -36,21 +41,45 @@ namespace maganement
             //Response.Write(DateTime.Now.ToString());
             //Response.Write(Path.GetFileName(Request.Url.AbsolutePath));
 
-            student[] li = new student[] {  
-            };
+            //student[] li = new student[] {  
+            //};
 
-            
-            //listStudent.Add(new student() { Name = "Ador", Roll = "20171002011" });
-            for(int i=0;i<10;i++)
-            {
-                listStudent.Add(new student() { Name = "Piash"+i+1, Roll = "2017100"+i+1+"011" });
-            }
-            listStudent.RemoveAt(5);
-            foreach (student st in listStudent)
-            {
-                //Response.Write("Name: "+st.Name+" and Roll: "+st.Roll+"<br/>");
-            }
-            Response.Write(RemoveQueryStringByKey(@"http://www.domain.com/uk_pa/PostDetail.aspx?hello=hi&xpid=4578", "xpid"));
+
+            ////listStudent.Add(new student() { Name = "Ador", Roll = "20171002011" });
+            //for(int i=0;i<10;i++)
+            //{
+            //    listStudent.Add(new student() { Name = "Piash"+i+1, Roll = "2017100"+i+1+"011" });
+            //}
+            //listStudent.RemoveAt(5);
+            //foreach (student st in listStudent)
+            //{
+            //    //Response.Write("Name: "+st.Name+" and Roll: "+st.Roll+"<br/>");
+            //}
+            //Response.Write(RemoveQueryStringByKey(@"http://www.domain.com/uk_pa/PostDetail.aspx?hello=hi&xpid=4578", "xpid"));
+
+            //string barcode = "23654789";
+            //Bitmap bitmap = new Bitmap(barcode.Length *18,80);
+            //using (Graphics graphic = Graphics.FromImage(bitmap))
+            //{
+            //    Font oFont = new System.Drawing.Font("IDAutomationHC39M", 12);                              
+            //    PointF point = new PointF(2f,2f);                
+            //    SolidBrush black = new SolidBrush(Color.Black);
+            //    SolidBrush white = new SolidBrush(Color.White);
+            //    graphic.FillRectangle(white, 0,0, bitmap.Width, bitmap.Height);
+            //    graphic.DrawString( barcode, oFont, black, point);
+                
+            //}
+            //using (MemoryStream ms = new MemoryStream())
+            //{
+            //    bitmap.Save(ms, ImageFormat.Png);
+            //    Image1.Height = bitmap.Height;
+            //    Image1.Width = bitmap.Width;
+            //    var base64Data = Convert.ToBase64String(ms.ToArray());
+            //    Image1.ImageUrl = "data:image/gif;base64," + base64Data;
+            //}
+
+
+
 
         }
 
@@ -147,6 +176,11 @@ namespace maganement
             {
                 ShowCategory(ddlWirehouseSub.SelectedValue.ToString());
             }
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

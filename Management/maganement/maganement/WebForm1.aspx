@@ -11,7 +11,9 @@
     <div>
     <asp:DropDownList ID="ddlWirehouseSub" OnTextChanged="ddlWirehouseSub_TextChanged" CssClass="form-control" runat="server"></asp:DropDownList>
         <asp:DropDownList ID="ddlCategory" CssClass="form-control" runat="server"></asp:DropDownList>
-        <asp:Button ID="Button1" runat="server" Text="Button" />
+        <asp:Button ID="Button1" OnClick="Button1_Click" runat="server" Text="Button" />
+        <asp:Image ID="Image1" runat="server" />
+        <asp:Label ID="Label1" runat="server" ></asp:Label>
 
     </div>
     </form>

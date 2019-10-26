@@ -97,7 +97,7 @@
 
                                                                 <div class="col-md-12">
                                                                         <div class="">
-                                                                            <table class="table table-striped custom-table m-b-0">
+                                                                            <table class="table table-striped custom-table m-b-0 datatable">
                                                                                 <thead>
                                                                                     <tr>
                                                                                         <th>#</th>
@@ -135,7 +135,7 @@
 
                                                     <div class="col-md-12">
                                                         <div class="">
-                                                            <table class="table table-striped custom-table m-b-0">
+                                                            <table class="table table-striped custom-table m-b-0 datatable">
                                                                 <thead>
                                                                     <tr>
                                                                         <th>#</th>
@@ -156,7 +156,31 @@
 
 
                                                 </div>
-												<div class="tab-pane" id="completed_tasks"></div>
+												<div class="tab-pane" id="completed_tasks">
+                                                    <div class="col-md-12">
+                                                        <div class="">
+                                                            <table class="table table-striped custom-table m-b-0 datatable">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>#</th>
+                                                                        <th>Product Name</th>
+                                                                        <th>Quantity</th>
+                                                                        <th>Return Price</th>
+                                                                        <th>Amount</th>
+                                                                        <th>Date</th>
+                                                                        <th>Unit</th>
+                                                                       
+                                                                        
+                                                                        <%--<th class="text-right">Actions</th>--%>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <asp:PlaceHolder ID="pnlShow" runat="server"></asp:PlaceHolder>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+												</div>
 											</div>
 										</div>
 									</div>

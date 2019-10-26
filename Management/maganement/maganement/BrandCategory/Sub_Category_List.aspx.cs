@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,11 +12,19 @@ namespace maganement.BrandCategory
 {
     public partial class Sub_Category_List : System.Web.UI.Page
     {
+        Verification _VR = new Verification();
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbm"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            { ShowWirehouse(); ShowAll(); }
+            if (Session["m_UserID"] != null && _VR.Check(Path.GetFileNameWithoutExtension(Page.AppRelativeVirtualPath), Session["m_UserID"].ToString()))
+            {
+                if (!IsPostBack)
+                { ShowWirehouse(); ShowAll(); }
+            }
+            else
+            {
+                Response.Redirect("~/AuthorizationFailed");
+            }
 
         }
         private void ShowAll()
