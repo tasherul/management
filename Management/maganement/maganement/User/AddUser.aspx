@@ -96,8 +96,8 @@
                                 <asp:Label ID="lblResult" runat="server"></asp:Label>
 								<div class="row">
 									<div class="col-sm-12 text-center m-t-20">
-                                        <asp:Button ID="btnUpdate" OnClick="btnUpdate_Click" runat="server" CssClass="btn btn-success" Text="Update" />
-                                        <asp:Button ID="btnUser" OnClick="btnUser_Click" CssClass="btn btn-primary " runat="server" Text="Add User" />
+                                        <asp:Button ID="btnUpdate" Visible="false" OnClick="btnUpdate_Click" runat="server" CssClass="btn btn-success" Text="Update" />
+                                        <asp:Button ID="btnUser"  Visible="false" OnClick="btnUser_Click" CssClass="btn btn-primary " runat="server" Text="Add User" />
 									</div>
 								</div>
 							

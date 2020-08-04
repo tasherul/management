@@ -118,6 +118,34 @@ namespace maganement
 
         }
         }
+
+        public DataTable DataTable(string CommandText)
+        {
+            using (SqlConnection Conn = new SqlConnection(ConfigurationManager.ConnectionStrings[ConfigName].ConnectionString))
+            {
+                Conn.Open();
+                SqlCommand newCmd = new SqlCommand();
+                newCmd.Connection = Conn;
+                newCmd.CommandText = CommandText;
+                //try
+                //{
+                DataTable _dt = new DataTable();
+                SqlDataAdapter _SqlAdaper = new System.Data.SqlClient.SqlDataAdapter(CommandText, Conn);
+                //_SqlAdaper.SelectCommand = new SqlCommand(CommandText,Conn);
+                _SqlAdaper.Fill(_dt);
+                Conn.Close();
+                //}
+                //catch (Exception error)
+                //{
+                //    Conn.Close();
+                //    SqlDataReader dr;
+                //    return ;
+                //}
+                return _dt;
+            }
+        }
+
+
         public string stringCheck(string CommandText)
         {
             return string_Check_PV(CommandText);

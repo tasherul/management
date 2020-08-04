@@ -39,6 +39,8 @@
 								<div class="form-group text-center">
                                     <asp:Button ID="btnLogin" OnClick="btnLogin_Click" runat="server" CssClass="btn btn-primary btn-block account-btn" Text="Login" />
 								</div>
+                                <p>UserName: Demo</p>
+                                <p>Password: Demo</p>
 								<div class="text-center">
 									<a href="forgotpassword">Forgot your password?</a>
 								</div>

@@ -1,4 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="ProductSale.aspx.cs" Inherits="maganement.Sale.ProductSale" %>
+
+<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Product Sale</title>
     <style type="text/css">
@@ -18,7 +20,7 @@
         {
             background-color:rgba(255, 255, 255, 0.00)!important;
             border:0;
-            width:25px;
+            width:35px;
         }
         .mid{
             padding-top:10px;
@@ -187,16 +189,16 @@
                               </ContentTemplate>
                             </asp:UpdatePanel>
 
-                           
-
+      
                             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                 <ContentTemplate>
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <div class="form-group">
-                                                <label>Product</label>
+                                                <label>Product </label>
                                                 <asp:DropDownList ID="ddlProductlist" OnTextChanged="ddlProductlist_TextChanged" AutoPostBack="true" CssClass="form-control" runat="server">
                                                 </asp:DropDownList>
+                                                <asp:TextBox ID="txtBarcode" CssClass="form-control" AutoPostBack="true"  OnTextChanged="txtBarcode_TextChanged" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
 
@@ -296,6 +298,8 @@
                                                     <asp:TextBox ID="txtInWord" CssClass="form-control" placeholder="in word" Enabled="false" runat="server"></asp:TextBox>
                                                     <br />
                                                     <asp:Button ID="btnSubmit" OnClick="btnSubmit_Click" CssClass="btn btn-success form-control" runat="server" Text="Submit" />
+                                                    <br />
+                                                    <asp:Label ID="lblResult" runat="server" ></asp:Label>
                                                 </div>
                                             </div>
                                         </div>

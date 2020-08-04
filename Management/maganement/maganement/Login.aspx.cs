@@ -62,7 +62,8 @@ namespace maganement
                                 Session["m_Type"] = _chk.stringCheck("select Type " + Ui);
                                 Session["m_Name"] = _chk.stringCheck("select Name " + Ui);
                                 Session["m_photo"] = _chk.stringCheck("select Photo " + Ui);
-                                Response.Redirect(URL);
+                                redirection();
+                                //Response.Redirect(URL);
                             }
                             else
                             {
@@ -72,7 +73,7 @@ namespace maganement
                                     Session["m_Type"] = _chk.stringCheck("select Type " + Ui);
                                     Session["m_Name"] = _chk.stringCheck("select Name " + Ui);
                                     Session["m_photo"] = _chk.stringCheck("select Photo " + Ui);
-                                    Response.Redirect(URL);
+                                    //Response.Redirect(URL);
                                 }
                                 else
                                 {
@@ -114,6 +115,19 @@ namespace maganement
 
 
         }
+
+        private void redirection()
+        {
+            if(Request.QueryString[""]!=null)
+            {
+                Response.Redirect("~"+ Request.QueryString[""].ToString());
+            }
+            else
+            {
+                Response.Redirect("~/");
+            }
+        }
+
         private void go()
         {
 

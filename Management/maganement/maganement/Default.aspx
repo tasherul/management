@@ -197,6 +197,6 @@
     <asp:PlaceHolder ID="pnlShowJavaChart" runat="server"></asp:PlaceHolder>
 
    
-		<script type="text/javascript" src="../assets/js/app.js"></script>
+<%--		<script type="text/javascript" src="../assets/js/app.js"></script>--%>
 
 </asp:Content>

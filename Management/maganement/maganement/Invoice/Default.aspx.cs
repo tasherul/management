@@ -19,8 +19,11 @@ namespace maganement.Invoice
         Barcodes bar = new Barcodes();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(Request.QueryString[""]!=null)
+            if (Session["m_UserID"] != null && _VR.Check(Path.GetFileNameWithoutExtension(Page.AppRelativeVirtualPath), Session["m_UserID"].ToString()))
             {
+
+                if (Request.QueryString[""]!=null)
+                {
                 string invoice = Request.QueryString[""].ToString();
                 if (chk.int32CheckSecurity("select count(*) from SaleList where Invoice_no='" + invoice + "' ", 1))
                 {
@@ -69,7 +72,11 @@ namespace maganement.Invoice
 
 
                 }
-
+            }
+            else
+            {
+                Response.Redirect("~/AuthorizationFailed");
+            }
 
         }
 

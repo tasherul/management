@@ -16,6 +16,8 @@ namespace maganement.Sale
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbm"].ConnectionString);
         Verification _VR = new Verification();
         private static List<StockDetails> StockAdd = new List<StockDetails>();
+        maganement.settings settings = new settings();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["m_UserID"] != null && _VR.Check(Path.GetFileNameWithoutExtension(Page.AppRelativeVirtualPath), Session["m_UserID"].ToString()))
@@ -25,7 +27,28 @@ namespace maganement.Sale
                     showCustomar();
                     showProduct();
                     txtDate.Text = DateTime.Now.ToShortDateString();
-                    
+             
+                    if (!settings.Get_BoolValue_Settings(41))
+                        txtSellingPrice.Enabled = false;
+                    if (!settings.Get_BoolValue_Settings(42))
+                    {
+                        txtQuantity.Enabled = false;
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "Sum()", true);
+                    }
+
+                    if (chk.stringCheck("select Barcode_Sell_Enable from m_login where userid='" + Session["m_UserID"].ToString() + "' ").ToLower() == "true" ? true : false)
+                    {
+                        ddlProductlist.Visible = false;
+                        txtBarcode.Visible = true;
+                        txtQuantity.Enabled = false;
+                    }
+                    else
+                    {
+                        ddlProductlist.Visible = true;
+                        txtBarcode.Visible = false;
+                        txtQuantity.Enabled = true;
+                    }
+
                 }
                 //txtMemo.Text = StockAdd.Count.ToString();
                 showSellingProduct();
@@ -79,10 +102,29 @@ namespace maganement.Sale
                             txtSellingPrice.Text = SellingPrice.ToString();
                             txtUnit.Text = chk.stringCheck("select Unit from Stock where s_id=" + C_ID);                            
                         }
+
+                        if (Request.QueryString["price"] != null)
+                        {
+                            bool a = settings.Get_BoolValue_Settings(41);
+                            bool b = settings.Get_BoolValue_Settings(42);
+                            if (!IsPostBack)
+                            {
+                                txtAmount.Text = Request.QueryString["price"].ToString();
+                                txtSellingPrice.Text = Request.QueryString["price"].ToString();
+                                txtQuantity.Text = "1";
+                            }
+                            if (!a && !b)
+                            {
+                                ProductADD();
+                                Response.Redirect("../Sale/ProductSale?=" + Request.QueryString[""].ToString());
+                            }
+                        }
+
+
                     }
                     else
                     {
-                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Notify", "alert('Error: " + chk.Int32SecurityCheckError + "');", true);
+                        ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Notify", "alert('Stock Not Found Error (101) " + chk.Int32SecurityCheckError + "');", true);
                     }
                 }
 
@@ -90,7 +132,10 @@ namespace maganement.Sale
             }
             else
             {
-                Response.Redirect("~/AuthorizationFailed");
+                if (Session["m_UserID"] != null)
+                    Response.Redirect("~/AuthorizationFailed");
+                else
+                    Response.Redirect("~/Login?=/Sale/ProductSale?=Retailer");
             }
         }
         public int saleCount(int s_id)
@@ -260,14 +305,19 @@ namespace maganement.Sale
             public string Unit;
             public double SellingPrice;
             public double Amount;
+            public string Barcode;
         }
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-            if(txtAmount.Text!="" || txtAmount.Text!="Null" || txtAmount.Text!="0" || txtAmount.Text!= "NaN")
+            ProductADD();
+        }
+        private void ProductADD()
+        {
+            if (txtAmount.Text != "" || txtAmount.Text != "Null" || txtAmount.Text != "0" || txtAmount.Text != "NaN")
             {
                 string s_ids = Request.QueryString["stock"].ToString();
-                string Stock_id = chk.stringCheck("select stock_id from Stock where s_id="+s_ids);
+                string Stock_id = chk.stringCheck("select stock_id from Stock where s_id=" + s_ids);
                 string ProductName = chk.stringCheck("select ProductName from Stock where s_id=" + s_ids);
                 string ProductCode = chk.stringCheck("select p_id from Stock where s_id=" + s_ids);
                 int BuyQuantity = chk.int32Check("select BuyQuantity from Stock where s_id=" + s_ids);
@@ -276,30 +326,55 @@ namespace maganement.Sale
                 int Total_Stock_S_id = 0;
                 foreach (StockDetails Stock in StockAdd)
                 {
-                    if(Stock.s_id == Convert.ToInt32(s_ids))
+                    if (Stock.s_id == Convert.ToInt32(s_ids))
                     {
                         Total_Stock_S_id += Stock.Quantity;//0---15
                     }
                 }
-                
+                bool ON = true;
+                if(settings.Get_BoolValue_Settings(43))
+                {
+                    int BuyingPrice = chk.int32Check("select BuyingPrice from Stock where s_id=" + s_ids);
+                    int sellPrice = Convert.ToInt32(txtSellingPrice.Text);
+                    if(sellPrice< BuyingPrice)//300>680
+                    {
+                        ON = false;
+                    }
+                    else
+                    {
+                        ON = true;
+                    }
+                }
+
                 if (Avaiable >= Total_Stock_S_id)//20>=0---20>=15
                 {//15---12
                     int countAvaiable = Avaiable - Total_Stock_S_id;
                     if (countAvaiable >= Convert.ToInt32(txtQuantity.Text))
                     {
-                        StockAdd.Add(new StockDetails()
+                        if (ON)
                         {
-                            ProductName = ProductName,
-                            ProductCode = ProductCode,
-                            Stock_id = Stock_id,
-                            s_id = Convert.ToInt32(s_ids),
-                            Quantity = Convert.ToInt32(txtQuantity.Text),
-                            Unit = txtUnit.Text,
-                            SellingPrice = Convert.ToInt32(txtSellingPrice.Text),
-                            Amount = Convert.ToInt32(txtAmount.Text)
-                        });
-                        pnlStockAdd.Visible = false;
-                        showSellingProduct();
+                            StockAdd.Add(new StockDetails()
+                            {
+                                ProductName = ProductName,
+                                ProductCode = ProductCode,
+                                Stock_id = Stock_id,
+                                s_id = Convert.ToInt32(s_ids),
+                                Quantity = Convert.ToInt32(txtQuantity.Text),
+                                Unit = txtUnit.Text,
+                                SellingPrice = Convert.ToInt32(txtSellingPrice.Text),
+                                Amount = Convert.ToInt32(txtAmount.Text),
+                                Barcode = Request.QueryString["bc"] != null ? Request.QueryString["bc"].ToString() : ""
+                            });
+                            pnlStockAdd.Visible = false;
+                            showSellingProduct();
+                            
+                            // Response.Redirect("../Sale/ProductSale?=" + Request.QueryString[""].ToString());
+
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Notify", "alert('Message : This Price You Can not Sale. Type Your Selling Price.');", true);
+                        }
                     }
                     else
                     {
@@ -310,13 +385,13 @@ namespace maganement.Sale
                 {
                     ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Notify", "alert('Message : Already insert All Product.');", true);
                 }
+
             }
             else
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Notify", "alert('Message : Input the Quality and Set Selling Price.');", true);
             }
         }
-
         private void showSellingProduct()
         {
             string Show = "";
@@ -327,6 +402,7 @@ namespace maganement.Sale
             string Sale = Request.QueryString[""].ToString();
             foreach (StockDetails Stock in StockAdd)
             {
+                string bCode = Stock.Barcode != "" ? "<br><b><sub>" + Stock.Barcode + "</sub></b>" : "";
                 Show += string.Format(@"<tr>
                                     <td>
                                         <a class='circle m-r-10 dColor'>{0}</a>
@@ -344,7 +420,7 @@ namespace maganement.Sale
                                               </ul>
                                         </div>
                                     </td>                                    
-                                </tr>", i, Stock.ProductName, Stock.Quantity, Stock.Unit, Stock.SellingPrice, Stock.Amount, Sale);
+                                </tr>", i, Stock.ProductName+ bCode, Stock.Quantity, Stock.Unit, Stock.SellingPrice, Stock.Amount, Sale);
                 i++;
                 totalStock += Stock.Quantity;
                 totalAmount += Stock.Amount;
@@ -473,7 +549,7 @@ namespace maganement.Sale
                         cmd.Parameters.AddWithValue("@Invoice_no", Invoice);
                         cmd.Parameters.AddWithValue("@Memo", txtMemo.Text);
                         cmd.Parameters.AddWithValue("@CustomerName", CustomerName);
-                        cmd.Parameters.AddWithValue("@c_id", Convert.ToInt32(CustomarCode));
+                        cmd.Parameters.AddWithValue("@c_id", CustomarCode);
                         cmd.Parameters.AddWithValue("@CustomerAddress", txtAddress.Text);
                         cmd.Parameters.AddWithValue("@CustomerMobile", txtMobile.Text);
                         cmd.Parameters.AddWithValue("@saleType", Type);
@@ -505,7 +581,10 @@ namespace maganement.Sale
                         foreach (StockDetails stock in StockAdd)
                         {                            
                             chk.boolCheck(string.Format(@"insert into SaleProductList (sale_id,p_id,ProductName,Quantity,Unit,SellingPrice,Amount,Invoice_no,s_id,stock_id) values({0},{1},'{2}',{3},'{4}',{5},{6},'{7}',{8},{9})", sale_id, Convert.ToInt32(stock.ProductCode), stock.ProductName, stock.Quantity, stock.Unit, stock.SellingPrice, stock.Amount, Invoice,stock.s_id,Convert.ToInt32(stock.Stock_id) ));
-                            
+                            if(stock.Barcode!="")
+                            {
+                                chk.boolCheck("update Barcode set Sell_Code='true' where BarCode='"+stock.Barcode+"' ");
+                            }
                             //InsertDataStockProductlist(sale_id,stock.s_id,Invoice,Convert.ToInt32(stock.ProductCode),stock.ProductName,stock.Quantity,stock.Unit,stock.SellingPrice,stock.Amount);
                             //int CountTotalQuantity = chk.int32Check("select BuyQuantity from Stock where s_id=" + stock.s_id);
                             //int CountSaleQuantity = saleCount(stock.s_id);
@@ -516,18 +595,17 @@ namespace maganement.Sale
                             //    soldThisProduct(stock.s_id);
                             //}
                         }
-
                         StockAdd.Clear();
-                       
+                        Response.Redirect("~/invoice/?=" + Invoice);
+
                         }
                         catch (Exception er)
                         {
+
+                            lblResult.Text = "Error: "+er.Message;
                             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Notify", "alert('Error1:" + er + "');", true);
                         }
-                        finally
-                        {
-                            Response.Redirect("../invoice/?=" + Invoice);
-                        }
+                      
 
             }
             }
@@ -576,5 +654,41 @@ namespace maganement.Sale
             con.Close();
         }
 
+        protected void txtBarcode_TextChanged(object sender, EventArgs e)
+        {
+            if(chk.int32CheckSecurity("select count(*) from Barcode where BarCode='"+txtBarcode.Text+ "' and Sell_Code  != 'true'", 1))
+            {
+                bool find = false;
+                foreach(StockDetails s in StockAdd)
+                {
+                    if (s.Barcode == txtBarcode.Text)
+                        find = true; 
+                }
+                if (find)
+                {
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Notify", "alert('Product is insert once');", true);
+                    txtBarcode.Text = "";
+                    pnlStockAdd.Visible = false;
+                }
+                else
+                {
+                    string s_id = chk.stringCheck("select s_id from Barcode where BarCode='" + txtBarcode.Text + "' ");
+                    //string p_id = chk.stringCheck("select p_id from Barcode where BarCode='" + txtBarcode.Text + "' ");
+                    string Price = chk.stringCheck("select Product_Price from Barcode where BarCode='" + txtBarcode.Text + "' ");
+
+                    Response.Redirect("../Sale/ProductSale?=" + Request.QueryString[""].ToString() + "&stock=" + s_id + "&price=" + Price + "&bc=" + txtBarcode.Text);
+                }
+            }
+            else
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "Notify", "alert('Message : Product is not found or sell it. Try another code.');", true);
+                txtBarcode.Text = "";
+            }
+        }
+
+        protected void chkBarcode_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

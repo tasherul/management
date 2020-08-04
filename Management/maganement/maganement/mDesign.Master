@@ -34,13 +34,16 @@
 					</a>
                 </div>
 				<a id="toggle_btn" href="javascript:void(0);"><i class="la la-bars"></i></a>
-                <div class="page-title-box pull-left">
+                <div class="page-title-box pull-left" style="width:300px;">
 					<%--<h3>Focus Technologies</h3>--%>
-                    <asp:DropDownList ID="WireHouse" AutoPostBack="true" runat="server" DataSourceID="SqlDataSource1" DataTextField="WirehouseName" DataValueField="w_id">
+                    <asp:DropDownList ID="WireHouse" CssClass="form-control" Width="100%" AutoPostBack="true" runat="server" DataSourceID="SqlDataSource1" DataTextField="WirehouseName" DataValueField="w_id">
                     </asp:DropDownList>
                     <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:dbm %>' SelectCommand="SELECT * FROM [wirehouse]"></asp:SqlDataSource>
-                    <asp:LinkButton ID="LinkButton1" Font-Size="25px" ForeColor="White" runat="server"> <i class="fa fa-arrow-circle-right"></i> </asp:LinkButton>
+                  
                 </div>
+                 <div class="page-title-box pull-left">
+                  <asp:LinkButton ID="LinkButton1" Font-Size="25px" ForeColor="White" runat="server"> <i class="fa fa-arrow-circle-right"></i> </asp:LinkButton>
+                     </div>
 				<a id="mobile_btn" class="mobile_btn pull-left" href="#sidebar"><i class="fa fa-bars" aria-hidden="true"></i></a>
 				<ul class="nav navbar-nav navbar-right user-menu pull-right">
 					<%--<li class="dropdown hidden-xs">
@@ -142,7 +145,7 @@
 					<div id="sidebar-menu" class="sidebar-menu">
 						<ul>
 							<li class="active"> 
-								<a href="#"><i class="la la-dashboard"></i> <span>Dashboard</span></a>
+								<a href="../../"><i class="la la-dashboard"></i> <span>Dashboard</span></a>
 							</li>
 							
 							<li class="submenu">
@@ -265,14 +268,15 @@
 								</ul>
 							</li>--%>
 							
-							<%--<li class="submenu">
+							<li class="submenu">
 								<a href="#"><i class="la la-barcode"></i> <span>Barcode</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
 									<li><a href="../Barcode/GenerateBarcode">Generate Barcode</a></li>
-									<li><a href="#">Barcode Settings</a></li>
+                                    <li><a href="../Barcode/BarcodeList">Barcode List</a></li>
+									<li><a href="../Settings/settings">Barcode Settings</a></li>
 									 
 								</ul>
-							</li>--%>
+							</li>
 							
 						<%--	<li class="submenu">
 								<a href="#"><i class="la la-cloud-upload"></i> <span>Product Online</span> <span class="menu-arrow"></span></a>

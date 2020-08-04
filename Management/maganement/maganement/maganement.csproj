@@ -9,13 +9,13 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{178B573E-F5A3-40FD-A4D3-44A60427CE0A}</ProjectGuid>
+    <ProjectGuid>{EA3B57E5-E5FD-463A-B51A-82716E89828E}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>maganement</RootNamespace>
     <AssemblyName>maganement</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -43,6 +43,34 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.0.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.0.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.0.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.0.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.0.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -53,6 +81,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -205,6 +234,19 @@
     <Content Include="assets\plugins\summernote\dist\summernote.css" />
     <Content Include="assets\plugins\summernote\dist\summernote.min.js" />
     <Content Include="AuthorizationFailed.aspx" />
+    <Content Include="AutoComplete\css\base\images\animated-overlay.gif" />
+    <Content Include="AutoComplete\css\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="AutoComplete\css\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="AutoComplete\css\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="AutoComplete\css\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="AutoComplete\css\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="AutoComplete\css\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="AutoComplete\css\base\jquery-ui-1.10.4.custom.css" />
+    <Content Include="AutoComplete\css\base\jquery-ui-1.10.4.custom.min.css" />
+    <Content Include="AutoComplete\js\jquery-1.10.2.js" />
+    <Content Include="AutoComplete\js\jquery-ui-1.10.4.custom.js" />
+    <Content Include="AutoComplete\js\jquery-ui-1.10.4.custom.min.js" />
+    <Content Include="Barcode\BarcodeList.aspx" />
     <Content Include="Barcode\GenerateBarcode.aspx" />
     <Content Include="BrandCategory\Brand.aspx" />
     <Content Include="BrandCategory\Brand_List.aspx" />
@@ -230,23 +272,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="assets\fonts\fontawesome-webfont3e6e.eot" />
-    <Content Include="assets\fonts\fontawesome-webfont3e6e.ttf" />
-    <Content Include="assets\fonts\fontawesome-webfont3e6e.woff" />
-    <Content Include="assets\fonts\fontawesome-webfontd41d.eot" />
-    <Content Include="assets\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="assets\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="assets\fonts\glyphicons-halflings-regulard41d.eot" />
-    <Content Include="assets\fonts\line-awesome0176.eot" />
-    <Content Include="assets\fonts\line-awesomeeb4f.eot" />
-    <Content Include="assets\fonts\line-awesomeeb4f.ttf" />
-    <Content Include="assets\fonts\line-awesomeeb4f.woff" />
-    <Content Include="assets\plugins\summernote\dist\font\summernote291f.eot" />
-    <Content Include="assets\plugins\summernote\dist\font\summernote291f.ttf" />
-    <Content Include="assets\plugins\summernote\dist\font\summernote291f.woff" />
-    <Content Include="assets\plugins\summernote\dist\font\summernoted41d.eot" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="ForgotPassword.aspx" />
+    <Content Include="image\21-07-2020-04-34-27.png" />
+    <Content Include="image\26-09-2019-12-55-35.png" />
+    <Content Include="image\4476756317_13102019010738.jpg" />
+    <Content Include="image\bar-code.jpg" />
     <Content Include="image\companylogo.png" />
     <Content Include="image\customer.PNG" />
     <Content Include="image\download.gif" />
@@ -421,24 +454,31 @@
     <Content Include="Invoice\assets\plugins\timepicker\tempusdominus-bootstrap-4.js" />
     <Content Include="Invoice\assets\plugins\tiny-editable\mindmup-editabletable.js" />
     <Content Include="Invoice\assets\plugins\tiny-editable\numeric-input-example.js" />
+    <Content Include="Invoice\Barcode.aspx" />
     <Content Include="Invoice\Default.aspx" />
     <Content Include="Invoice\Return.aspx" />
     <Content Include="Invoice\Stock.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="mDesign.Master" />
-    <Content Include="Product\Product_Add.aspx" />
-    <Content Include="Product\Product_List.aspx" />
-    <Content Include="Product\Product_Stock.aspx" />
-    <Content Include="Product\Product_StockList.aspx" />
-    <Content Include="Return\Purchase_Add.aspx" />
-    <Content Include="Return\ReturnList.aspx" />
-    <Content Include="Sale\ProductSale.aspx" />
-    <Content Include="Sale\SaleList.aspx" />
-    <Content Include="Settings\settings.aspx" />
-    <Content Include="WebForm1.aspx" />
-    <Content Include="BarcodeFont\IDAutomationHC39M.ttf" />
+    <Content Include="assets\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="assets\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="assets\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="assets\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="assets\fonts\line-awesome0176.eot" />
+    <Content Include="assets\fonts\line-awesomeeb4f.eot" />
+    <Content Include="assets\fonts\line-awesomeeb4f.ttf" />
+    <Content Include="assets\fonts\line-awesomeeb4f.woff" />
+    <Content Include="assets\plugins\summernote\dist\font\summernote291f.eot" />
+    <Content Include="assets\plugins\summernote\dist\font\summernote291f.ttf" />
+    <Content Include="assets\plugins\summernote\dist\font\summernote291f.woff" />
+    <Content Include="assets\plugins\summernote\dist\font\summernoted41d.eot" />
     <Content Include="BarcodeFont\Barcodefont.zip" />
+    <Content Include="BarcodeFont\IDAutomationHC39M.ttf" />
     <Content Include="Invoice\assets\fonts\dripicons-v2.eot" />
     <Content Include="Invoice\assets\fonts\dripicons-v2.ttf" />
     <Content Include="Invoice\assets\fonts\dripicons-v2.woff" />
@@ -478,7 +518,18 @@
     <Content Include="Invoice\assets\plugins\summernote\font\summernote291f.ttf" />
     <Content Include="Invoice\assets\plugins\summernote\font\summernote291f.woff" />
     <Content Include="Invoice\assets\plugins\summernote\font\summernoted41d.eot" />
+    <Content Include="WebForm1.aspx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Product\Product_Add.aspx" />
+    <Content Include="Product\Product_List.aspx" />
+    <Content Include="Product\Product_Stock.aspx" />
+    <Content Include="Product\Product_StockList.aspx" />
+    <Content Include="Return\Purchase_Add.aspx" />
+    <Content Include="Return\ReturnList.aspx" />
+    <Content Include="Sale\ProductSale.aspx" />
+    <Content Include="Sale\SaleList.aspx" />
+    <Content Include="Scripts\ai.0.22.9-build00167.js" />
+    <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -510,6 +561,7 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Settings\settings.aspx" />
     <Content Include="User\AddUser.aspx" />
     <Content Include="User\CreateGroup.aspx" />
     <Content Include="User\UserList.aspx" />
@@ -531,8 +583,10 @@
     <Compile Include="App_Start\Check.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\loginSecurity.cs" />
+    <Compile Include="App_Start\RandomGenarator.cs" />
     <Compile Include="App_Start\RandomNumber.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\settings.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\Verification.cs" />
     <Compile Include="AuthorizationFailed.aspx.cs">
@@ -541,6 +595,13 @@
     </Compile>
     <Compile Include="AuthorizationFailed.aspx.designer.cs">
       <DependentUpon>AuthorizationFailed.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Barcode\BarcodeList.aspx.cs">
+      <DependentUpon>BarcodeList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Barcode\BarcodeList.aspx.designer.cs">
+      <DependentUpon>BarcodeList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Barcode\GenerateBarcode.aspx.cs">
       <DependentUpon>GenerateBarcode.aspx</DependentUpon>
@@ -677,6 +738,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Invoice\Barcode.aspx.cs">
+      <DependentUpon>Barcode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Invoice\Barcode.aspx.designer.cs">
+      <DependentUpon>Barcode.aspx</DependentUpon>
     </Compile>
     <Compile Include="Invoice\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -817,8 +885,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="AutoComplete\css\" />
-    <Folder Include="AutoComplete\js\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -833,9 +899,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>56404</DevelopmentServerPort>
+          <DevelopmentServerPort>55037</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:56404/</IISUrl>
+          <IISUrl>http://localhost:55037/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

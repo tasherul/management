@@ -89,16 +89,15 @@ namespace maganement.Product
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
-            cmd.CommandText = @" SELECT stock_id
+            cmd.CommandText = @" SELECT id, stock_id
       ,InputDate
       ,TotalAmount
       ,TotalStock
       ,Activity
 	  ,m_login.Name,
-	   (select count(*) from [dbmanagement].[dbo].Stock where Stock.stock_id=StockList.stock_id)
+	   (select count(*) from Stock where Stock.stock_id=StockList.stock_id)
 	   as CountProduct 
-  FROM [dbmanagement].[dbo].[StockList],[dbmanagement].[dbo].[m_login]
-  where StockList.userid=m_login.userid
+  FROM StockList order by id desc
 ";
             con.Open();
             SqlDataReader dr = cmd.ExecuteReader();
@@ -120,13 +119,13 @@ namespace maganement.Product
                     Author = "<i class='fa fa-dot-circle-o text-success'></i> Active <i class='caret'></i>";
                     Auther_activity = "Dective"; Author_css = "text-danger";
                     b = 0;
-                    Return_product = "<li><a href='../Return/Purchase_Add?sid="+ stock_id + "' title='Return' ><i class='fa fa-undo m-r-5'></i> Return</a></li><li><a href='../Barcode/GenerateBarcode?Stockid=" + stock_id + "' title='Barcode'><i class='fa fa-barcode m-r-5'></i> Barcode</a></li>";
+                    Return_product = @"<li><a href='../Return/Purchase_Add?sid="+ stock_id + "' title='Return' ><i class='fa fa-undo m-r-5'></i> Return</a></li><li><a href='../Barcode/GenerateBarcode?Stockid_p_list=" + stock_id + "' title='Barcode'><i class='fa fa-barcode m-r-5'></i> Barcode</a></li>";
                 }
                 else if(Activity == "False")
                 {
                     Author = "<i class='fa fa-dot-circle-o text-danger'></i> Deactive <i class='caret'></i>";
                     Auther_activity = "Active"; Author_css = "text-success";
-                    Return_product = "<li><a href='../Return/Purchase_Add?sid=" + stock_id + "' title='Return' ><i class='fa fa-undo m-r-5'></i> Return</a></li><li><a href='../Barcode/GenerateBarcode?Stockid=" + stock_id + "' title='Barcode'><i class='fa fa-barcode m-r-5'></i> Barcode</a></li>";
+                    Return_product = @"<li><a href='../Return/Purchase_Add?sid=" + stock_id + "' title='Return' ><i class='fa fa-undo m-r-5'></i> Return</a></li><li><a href='../Barcode/GenerateBarcode?Stockid_p_list=" + stock_id + "' title='Barcode'><i class='fa fa-barcode m-r-5'></i> Barcode</a></li>";
                     b = 1;
                 }
                 else if(Activity=="Sold")
@@ -134,7 +133,7 @@ namespace maganement.Product
                     Author = "<i class='fa fa-times text-danger'></i> Sold";
                     Auther_activity = ""; Author_css = "text-danger";
                     Sold_Css = "style='display:none;' ";
-                    Return_product = "<li><a href='../Barcode/GenerateBarcode?Stockid=" + stock_id + "' title='Barcode'><i class='fa fa-barcode m-r-5'></i> Barcode</a></li>";
+                    Return_product = @"<li><a href='../Barcode/GenerateBarcode?Stockid_p_list=" + stock_id + "' title='Barcode'><i class='fa fa-barcode m-r-5'></i> Barcode</a></li>";
                 }
 
                 data += string.Format(@"<tr>

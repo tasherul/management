@@ -48,8 +48,20 @@
                                             <h6>Invoice : # <strong><asp:Label ID="lblInvoice" runat="server"></asp:Label></strong></h6>
                                             <asp:Image ID="BarcodeShow" runat="server" />
                                             <%--<img src="../image/download.gif" />--%>
-                                            <h6 class="mb-0">Order ID: #<asp:Label ID="lblorderID" runat="server" ></asp:Label> </h6>
-                                            <h6 class="mb-0">Date: <asp:Label ID="lblDate" runat="server" ></asp:Label> </h6>
+                                            
+                                          
+                                            <table class="w-100" style="margin-top:10px;">
+                                                <tr>
+                                                    <td style="text-align:right;border:1px solid #808080; line-height:30px;"><b>Order ID:</b>&nbsp;</td>
+                                                    <td style="border:1px solid #808080;line-height:30px;"><b>&nbsp; #<asp:Label ID="lblorderID" runat="server" ></asp:Label></b></td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="text-align:right;border:1px solid #808080;line-height:30px;"><b>Date:</b>&nbsp;</td>
+                                                    <td style="border:1px solid #808080;line-height:30px;"><b>&nbsp;<asp:Label ID="lblDate" runat="server" ></asp:Label></b></td>
+                                                </tr>
+                                            </table>
+                                            
+                                         
                                         </div>
                                         <div class=" float-left">
                                             <h4 class="mb-0 align-self-center">

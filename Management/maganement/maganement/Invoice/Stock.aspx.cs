@@ -19,63 +19,69 @@ namespace maganement.Invoice
         Barcodes bar = new Barcodes();
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            if (Request.QueryString[""] != null)
+            if (Session["m_UserID"] != null && _VR.Check(Path.GetFileNameWithoutExtension(Page.AppRelativeVirtualPath), Session["m_UserID"].ToString()))
             {
-                string invoice = Request.QueryString[""].ToString();
-                if (chk.int32CheckSecurity("select count(*) from StockList where stock_id=" + invoice , 1))
+                if (Request.QueryString[""] != null)
                 {
-                    CompanyImage.ImageUrl = "../image/" + chk.stringCheck("select ValueString from Settings where id=7");
-                    bar.BarcodeFontSize = chk.int32Check("select ValueInt from Settings where id=9");
-                    bar.BarcodeWidth = chk.int32Check("select ValueInt from Settings where id=10");
-                    bar.BarcodeHigth = chk.int32Check("select ValueInt from Settings where id=11");
-                    //lblTermsAndCondition.Text = chk.stringCheck("select ValueString from Settings where id=8");
-                    BarcodeShow.ImageUrl = bar.BarcodeGenerator(invoice);
-                    BarcodeShow.Height = bar.ImageHeigth;
-                    BarcodeShow.Width = bar.ImageWidth;
+                    string invoice = Request.QueryString[""].ToString();
+                    if (chk.int32CheckSecurity("select count(*) from StockList where stock_id=" + invoice , 1))
+                    {
+                        CompanyImage.ImageUrl = "../image/" + chk.stringCheck("select ValueString from Settings where id=7");
+                        bar.BarcodeFontSize = chk.int32Check("select ValueInt from Settings where id=9");
+                        bar.BarcodeWidth = chk.int32Check("select ValueInt from Settings where id=10");
+                        bar.BarcodeHigth = chk.int32Check("select ValueInt from Settings where id=11");
+                        //lblTermsAndCondition.Text = chk.stringCheck("select ValueString from Settings where id=8");
+                        BarcodeShow.ImageUrl = bar.BarcodeGenerator(invoice);
+                        BarcodeShow.Height = bar.ImageHeigth;
+                        BarcodeShow.Width = bar.ImageWidth;
 
-                    lblInvoice.Text = invoice;
+                        lblInvoice.Text = invoice;
 
-                    lblCompanyName.Text = chk.stringCheck("select ValueString from Settings where id=3");
-                    lblCompanyAddress1.Text = chk.stringCheck("select ValueString from Settings where id=4");
-                    lblCompanyAddress2.Text = chk.stringCheck("select ValueString from Settings where id=5");
-                    lblCompanyPhone.Text = chk.stringCheck("select ValueString from Settings where id=6");
+                        lblCompanyName.Text = chk.stringCheck("select ValueString from Settings where id=3");
+                        lblCompanyAddress1.Text = chk.stringCheck("select ValueString from Settings where id=4");
+                        lblCompanyAddress2.Text = chk.stringCheck("select ValueString from Settings where id=5");
+                        lblCompanyPhone.Text = chk.stringCheck("select ValueString from Settings where id=6");
 
                     
 
 
-                    string st = " from StockList where stock_id='" + invoice+"'";
-                    string SupplerID = chk.stringCheck("select c_id "+st);
+                        string st = " from StockList where stock_id='" + invoice+"'";
+                        string SupplerID = chk.stringCheck("select c_id "+st);
 
 
-                    lblCustomarName.Text = chk.stringCheck("select Name from Supplier where c_id="+ SupplerID);
-                    lblCustomarAddress.Text = chk.stringCheck("select Address from Supplier where c_id=" + SupplerID);
-                    lblCustomarPhone.Text = chk.stringCheck("select Mobile from Supplier where c_id=" + SupplerID);
+                        lblCustomarName.Text = chk.stringCheck("select Name from Supplier where c_id="+ SupplerID);
+                        lblCustomarAddress.Text = chk.stringCheck("select Address from Supplier where c_id=" + SupplerID);
+                        lblCustomarPhone.Text = chk.stringCheck("select Mobile from Supplier where c_id=" + SupplerID);
 
-                    //lblorderID.Text = chk.stringCheck("select sale_id " + st);
-                    lblDate.Text = chk.stringCheck("select InputDate " + st);
+                        //lblorderID.Text = chk.stringCheck("select sale_id " + st);
+                        lblDate.Text = chk.stringCheck("select InputDate " + st);
 
-                    //lblDiscount.Text = chk.stringCheck("select DiscountAmount " + st);
-                    //lblDue.Text = chk.stringCheck("select TotalDue " + st);
-                    lblPaid.Text = chk.stringCheck("select TotalAmount " + st);
-                    //lblPreviousDue.Text = chk.stringCheck("select PreviousDue " + st);
-                    lblSubTotal.Text = chk.stringCheck("select TotalStock " + st);
-                    //lblVat.Text = chk.stringCheck("select VatAmount " + st);
-                    //lblInWord.Text = chk.stringCheck("select InWord " + st);
-                    //lblMemo.Text = chk.stringCheck("select Memo " + st);
-                    divAlign.Attributes.Add("class", "row d-flex " + chk.stringCheck("select ValueString from Settings where id=12"));
-                    divSize.Attributes.Add("class", chk.stringCheck("select ValueString from Settings where id=13"));
-                    SaleProductList(invoice);
+                        //lblDiscount.Text = chk.stringCheck("select DiscountAmount " + st);
+                        //lblDue.Text = chk.stringCheck("select TotalDue " + st);
+                        lblPaid.Text = chk.stringCheck("select TotalAmount " + st);
+                        //lblPreviousDue.Text = chk.stringCheck("select PreviousDue " + st);
+                        lblSubTotal.Text = chk.stringCheck("select TotalStock " + st);
+                        //lblVat.Text = chk.stringCheck("select VatAmount " + st);
+                        //lblInWord.Text = chk.stringCheck("select InWord " + st);
+                        //lblMemo.Text = chk.stringCheck("select Memo " + st);
+                        divAlign.Attributes.Add("class", "row d-flex " + chk.stringCheck("select ValueString from Settings where id=12"));
+                        divSize.Attributes.Add("class", chk.stringCheck("select ValueString from Settings where id=13"));
+                        SaleProductList(invoice);
+                    }
+                    else
+                    {
+                        Response.Redirect("../Error?=Invoice Not Found try Again");
+                    }
+
+
+
                 }
-                else
-                {
-                    Response.Redirect("../Error?=Invoice Not Found try Again");
-                }
-
-
 
             }
-
+            else
+            {
+                Response.Redirect("~/AuthorizationFailed");
+            }
         }
 
         private void SaleProductList(string invoice)
