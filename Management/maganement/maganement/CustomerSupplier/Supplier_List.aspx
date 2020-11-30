@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="Supplier_List.aspx.cs" Inherits="maganement.CustomerSupplier.Supplier_List" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="Supplier_List.aspx.cs" Inherits="management.CustomerSupplier.Supplier_List" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Supplier List</title>
 </asp:Content>

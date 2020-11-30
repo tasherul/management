@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace maganement.Expanse
+namespace management.Expanse
 {
     public partial class ExpanseCategory : System.Web.UI.Page
     {

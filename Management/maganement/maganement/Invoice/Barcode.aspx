@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Barcode.aspx.cs" Inherits="maganement.Invoice.Barcode" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Barcode.aspx.cs" Inherits="management.Invoice.Barcode" %>
 
 <!DOCTYPE html>
 

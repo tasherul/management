@@ -15,7 +15,7 @@ using System.Xml.Linq;
 using System.Data.SqlClient;
 using System.IO;
 
-namespace maganement
+namespace management
 {
     public class Check
     {

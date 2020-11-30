@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="GenerateBarcode.aspx.cs" Inherits="maganement.Barcode.GenerateBarcode" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="GenerateBarcode.aspx.cs" Inherits="management.Barcode.GenerateBarcode" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Purchase Add</title>
      <style type="text/css">

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace maganement.Settings {
+namespace management.Settings {
     
     
     public partial class settings {

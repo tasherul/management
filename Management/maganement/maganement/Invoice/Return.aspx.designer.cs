@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace maganement.Invoice {
+namespace management.Invoice {
     
     
     public partial class Return {

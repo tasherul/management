@@ -10,7 +10,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 
-namespace maganement.Product
+namespace management.Product
 {
     public partial class Product_Stock : System.Web.UI.Page
     {

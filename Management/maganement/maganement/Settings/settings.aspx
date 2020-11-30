@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="settings.aspx.cs" Inherits="maganement.Settings.settings" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="settings.aspx.cs" Inherits="management.Settings.settings" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
        <title>Settings</title>
 </asp:Content>

@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace maganement.Sale
+namespace management.Sale
 {
     public partial class SaleList : System.Web.UI.Page
     {

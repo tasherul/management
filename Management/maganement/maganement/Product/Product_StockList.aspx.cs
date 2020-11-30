@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace maganement.Product
+namespace management.Product
 {
     public partial class Product_StockList : System.Web.UI.Page
     {
@@ -63,7 +63,10 @@ namespace maganement.Product
             }
             else
             {
-                Response.Redirect("~/AuthorizationFailed");
+                if (Session["m_UserID"] != null)
+                    Response.Redirect("~/AuthorizationFailed");
+                else
+                    Response.Redirect("~/Login?="+Request.Url.AbsolutePath);
             }
 
         }
@@ -89,7 +92,7 @@ namespace maganement.Product
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
-            cmd.CommandText = @" SELECT id, stock_id
+            cmd.CommandText = @" SELECT StockList.id, stock_id
       ,InputDate
       ,TotalAmount
       ,TotalStock
@@ -97,7 +100,7 @@ namespace maganement.Product
 	  ,m_login.Name,
 	   (select count(*) from Stock where Stock.stock_id=StockList.stock_id)
 	   as CountProduct 
-  FROM StockList order by id desc
+  FROM StockList,m_login where StockList.userid=m_login.userid order by StockList.id desc
 ";
             con.Open();
             SqlDataReader dr = cmd.ExecuteReader();

@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace maganement.BrandCategory
+namespace management.BrandCategory
 {
     public partial class Categoty_Add : System.Web.UI.Page
     {

@@ -10,7 +10,7 @@ using System.Configuration;
 using System.Data;
 using System.IO;
 
-namespace maganement
+namespace management
 {
     public class Verification
     {

@@ -6,9 +6,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using maganement.Models;
+using management.Models;
 
-namespace maganement
+namespace management
 {
     public class EmailService : IIdentityMessageService
     {

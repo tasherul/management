@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace maganement.User
+namespace management.User
 {
     public partial class UserList : System.Web.UI.Page
     {

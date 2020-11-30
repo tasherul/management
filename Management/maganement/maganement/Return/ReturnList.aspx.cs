@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace maganement.Return
+namespace management.Return
 {
     public partial class ReturnList : System.Web.UI.Page
     {

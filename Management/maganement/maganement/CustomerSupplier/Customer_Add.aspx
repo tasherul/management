@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="Customer_Add.aspx.cs" Inherits="maganement.CustomerSupplier.Customer_Add" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="Customer_Add.aspx.cs" Inherits="management.CustomerSupplier.Customer_Add" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Customer Add</title>
 </asp:Content>

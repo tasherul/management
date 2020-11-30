@@ -10,7 +10,7 @@ using System.Configuration;
 using System.Data;
 using System.IO;
 
-namespace maganement.User
+namespace management.User
 {
     public partial class AddUser : System.Web.UI.Page
     {

@@ -15,7 +15,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Text;
 
-namespace maganement
+namespace management
 {
     public class RandomNumber
     {

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace maganement.Expanse {
+namespace management.Expanse {
     
     
     public partial class ExpanseAdd {

@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace maganement.BrandCategory
+namespace management.BrandCategory
 {
     public partial class Brand : System.Web.UI.Page
     {
@@ -154,6 +154,8 @@ namespace maganement.BrandCategory
             {
                 string CategoryName = txtBrandName.Text;
                 _Anti.Url = true;
+                _Anti.Address = true;
+                _Anti.Password = true;
                 if (_Anti.StringData(CategoryName))
                 {
                     if (_chk.int32Check("select count(*) from Brand where SubCategory_id='" + ddlSubCategory.SelectedValue.ToString() + "' and BrandName='" + txtBrandName.Text + "'  ") == 0)

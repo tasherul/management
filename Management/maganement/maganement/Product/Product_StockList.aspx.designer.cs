@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace maganement.Product {
+namespace management.Product {
     
     
     public partial class Product_StockList {

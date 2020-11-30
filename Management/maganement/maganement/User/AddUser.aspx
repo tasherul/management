@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="AddUser.aspx.cs" Inherits="maganement.User.AddUser" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="AddUser.aspx.cs" Inherits="management.User.AddUser" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Add a User</title>
 </asp:Content>

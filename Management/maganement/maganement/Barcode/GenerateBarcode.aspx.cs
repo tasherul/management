@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace maganement.Barcode
+namespace management.Barcode
 {
     public partial class GenerateBarcode : System.Web.UI.Page
     {

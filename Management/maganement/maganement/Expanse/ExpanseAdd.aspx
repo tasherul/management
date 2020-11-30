@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="ExpanseAdd.aspx.cs" Inherits="maganement.Expanse.ExpanseAdd" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="ExpanseAdd.aspx.cs" Inherits="management.Expanse.ExpanseAdd" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Expanse ADD</title>
     	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet"/>

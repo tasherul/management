@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="ExpanseCategory.aspx.cs" Inherits="maganement.Expanse.ExpanseCategory" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="ExpanseCategory.aspx.cs" Inherits="management.Expanse.ExpanseCategory" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
         <title>Category</title>
 </asp:Content>

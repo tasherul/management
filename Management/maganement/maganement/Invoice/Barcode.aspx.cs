@@ -10,15 +10,15 @@ using System.Configuration;
 using System.Drawing;
 using System.Data;
 
-namespace maganement.Invoice
+namespace management.Invoice
 {
     public partial class Barcode : System.Web.UI.Page
     {
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbm"].ConnectionString);
         Verification _VR = new Verification();
         Check chk = new Check();
-        maganement.settings settings = new maganement.settings();
-        maganement.Barcodes barcode = new maganement.Barcodes();
+        management.settings settings = new management.settings();
+        management.Barcodes barcode = new management.Barcodes();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["m_UserID"] != null && _VR.Check(Path.GetFileNameWithoutExtension(Page.AppRelativeVirtualPath), Session["m_UserID"].ToString()))

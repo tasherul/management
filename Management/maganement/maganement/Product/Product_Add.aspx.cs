@@ -9,7 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 
-namespace maganement.Product
+namespace management.Product
 {
     public partial class Product_Add : System.Web.UI.Page
     {

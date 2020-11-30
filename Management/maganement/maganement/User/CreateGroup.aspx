@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="CreateGroup.aspx.cs" Inherits="maganement.User.CreateGroup" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="CreateGroup.aspx.cs" Inherits="management.User.CreateGroup" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Create Group</title>
 </asp:Content>

@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(maganement.Startup))]
-namespace maganement
+[assembly: OwinStartupAttribute(typeof(management.Startup))]
+namespace management
 {
     public partial class Startup {
         public void Configuration(IAppBuilder app) {

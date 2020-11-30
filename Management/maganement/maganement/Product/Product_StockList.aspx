@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="Product_StockList.aspx.cs" Inherits="maganement.Product.Product_StockList" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="Product_StockList.aspx.cs" Inherits="management.Product.Product_StockList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Product Stock List</title>
          <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css"/>

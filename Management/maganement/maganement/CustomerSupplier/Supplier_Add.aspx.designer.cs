@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace maganement.CustomerSupplier {
+namespace management.CustomerSupplier {
     
     
     public partial class Supplier_Add {

@@ -13,7 +13,7 @@ using System.Drawing.Text;
 
 
 
-namespace maganement
+namespace management
 {
     public class Barcodes
     {

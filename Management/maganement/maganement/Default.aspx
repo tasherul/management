@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="maganement.Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="management.Default" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Dashboard</title>
    

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace maganement.Demo {
+namespace management.Demo {
     
     
     public partial class Default {

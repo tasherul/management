@@ -6,9 +6,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using maganement.Models;
+using management.Models;
 
-namespace maganement.Models
+namespace management.Models
 {
     // You can add User data for the user by adding more properties to your User class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
@@ -42,7 +42,7 @@ namespace maganement.Models
 }
 
 #region Helpers
-namespace maganement
+namespace management
 {
     public static class IdentityHelper
     {

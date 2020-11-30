@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.IO;
 
-namespace maganement.User
+namespace management.User
 {
     public partial class CreateGroup : System.Web.UI.Page
     {

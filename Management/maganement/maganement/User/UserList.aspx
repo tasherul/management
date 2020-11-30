@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="UserList.aspx.cs" Inherits="maganement.User.UserList" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="UserList.aspx.cs" Inherits="management.User.UserList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>User List</title>
 </asp:Content>

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace maganement.User {
+namespace management.User {
     
     
     public partial class AddUser {

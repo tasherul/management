@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="AuthorizationFailed.aspx.cs" Inherits="maganement.AuthorizationFailed" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="AuthorizationFailed.aspx.cs" Inherits="management.AuthorizationFailed" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Authorization Failed</title>
 </asp:Content>

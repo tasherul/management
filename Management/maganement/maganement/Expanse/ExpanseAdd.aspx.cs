@@ -9,7 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 
-namespace maganement.Expanse
+namespace management.Expanse
 {
     public partial class ExpanseAdd : System.Web.UI.Page
     {

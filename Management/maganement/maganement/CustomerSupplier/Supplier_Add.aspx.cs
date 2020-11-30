@@ -9,7 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 
-namespace maganement.CustomerSupplier
+namespace management.CustomerSupplier
 {
     public partial class Supplier_Add : System.Web.UI.Page
     {

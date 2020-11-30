@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="Categoty_Add.aspx.cs" Inherits="maganement.BrandCategory.Categoty_Add" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="Categoty_Add.aspx.cs" Inherits="management.BrandCategory.Categoty_Add" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Category</title>
 

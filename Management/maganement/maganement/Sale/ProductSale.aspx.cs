@@ -9,14 +9,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace maganement.Sale
+namespace management.Sale
 {
     public partial class ProductSale : System.Web.UI.Page
     {
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbm"].ConnectionString);
         Verification _VR = new Verification();
         private static List<StockDetails> StockAdd = new List<StockDetails>();
-        maganement.settings settings = new settings();
+        management.settings settings = new settings();
 
         protected void Page_Load(object sender, EventArgs e)
         {

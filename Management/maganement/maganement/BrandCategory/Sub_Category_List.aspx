@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="Sub_Category_List.aspx.cs" Inherits="maganement.BrandCategory.Sub_Category_List" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" EnableEventValidation="false" AutoEventWireup="true" CodeBehind="Sub_Category_List.aspx.cs" Inherits="management.BrandCategory.Sub_Category_List" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet"/>
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css"/>

@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="mDesign.master.cs" Inherits="maganement.mDesign" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="mDesign.master.cs" Inherits="management.mDesign" %>
 
 
 <!DOCTYPE html>
@@ -24,7 +24,15 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        
+        <style>
+            .wirehouseCss{
+                border:0;
+                border-bottom:2px solid #808080;
+                background-color:rgba(0, 0, 0, 0.00);
+                font-size:20px;
+                font-weight:bold;
+            }
+        </style>
         <div class="main-wrapper">
             <div class="header">
                 <div class="header-left">
@@ -36,9 +44,9 @@
 				<a id="toggle_btn" href="javascript:void(0);"><i class="la la-bars"></i></a>
                 <div class="page-title-box pull-left" style="width:300px;">
 					<%--<h3>Focus Technologies</h3>--%>
-                    <asp:DropDownList ID="WireHouse" CssClass="form-control" Width="100%" AutoPostBack="true" runat="server" DataSourceID="SqlDataSource1" DataTextField="WirehouseName" DataValueField="w_id">
+                    <asp:DropDownList ID="WireHouse"  CssClass="wirehouseCss form-control" Width="100%" AutoPostBack="true" runat="server">
                     </asp:DropDownList>
-                    <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:dbm %>' SelectCommand="SELECT * FROM [wirehouse]"></asp:SqlDataSource>
+
                   
                 </div>
                  <div class="page-title-box pull-left">

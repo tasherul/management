@@ -10,7 +10,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 
-namespace maganement.Settings
+namespace management.Settings
 {
     public partial class settings : System.Web.UI.Page
     {
@@ -18,7 +18,7 @@ namespace maganement.Settings
         Verification _VR = new Verification();
         Check chk = new Check();
         Barcodes barCode = new Barcodes();
-        maganement.settings set = new maganement.settings();
+        management.settings set = new management.settings();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["m_UserID"] != null && _VR.Check(Path.GetFileNameWithoutExtension(Page.AppRelativeVirtualPath), Session["m_UserID"].ToString()))

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace maganement.Return {
+namespace management.Return {
     
     
     public partial class ReturnList {

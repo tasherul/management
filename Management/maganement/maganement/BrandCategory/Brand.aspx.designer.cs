@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace maganement.BrandCategory {
+namespace management.BrandCategory {
     
     
     public partial class Brand {

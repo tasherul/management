@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="ReturnList.aspx.cs" Inherits="maganement.Return.ReturnList" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/mDesign.Master" AutoEventWireup="true" CodeBehind="ReturnList.aspx.cs" Inherits="management.Return.ReturnList" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Return List</title>
 </asp:Content>

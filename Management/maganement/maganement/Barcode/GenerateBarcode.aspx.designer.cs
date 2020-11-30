@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace maganement.Barcode {
+namespace management.Barcode {
     
     
     public partial class GenerateBarcode {
